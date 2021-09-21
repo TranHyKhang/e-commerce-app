@@ -15,10 +15,21 @@ const Tab = createBottomTabNavigator();
 
 export function TabNavigator() {
     return (
-        <Tab.Navigator>
+        <Tab.Navigator
+            screenOptions={{
+                tabBarShowLabel: false,
+                tabBarLabelStyle: {
+                    backgroundColor: 'black'
+                },
+                style: {
+                    backgroundColor: 'black'
+                }
+            }}
+        >
             <Tab.Screen component={HomeScreen} name='HomeScreen'/>
             <Tab.Screen component={CatalogScreen} name='CatalogScreen'/>
             <Tab.Screen component={ProfileScreen} name='ProfileScreen'/>
         </Tab.Navigator>
+
     )
 }
