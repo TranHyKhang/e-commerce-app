@@ -1,11 +1,17 @@
 import React from 'react';
 
+//Import MainNavigation
 import {MainNavigation} from './src/navigation'
 
-const App = () => {
+//Import store
+import store from './src/store/index';
+import {Provider} from 'react-redux'
 
+const App = () => {
   return (
-    <MainNavigation/>
+    <Provider store={store}>
+      <MainNavigation/>
+    </Provider>
   );
 };
 
