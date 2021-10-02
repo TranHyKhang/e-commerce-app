@@ -4,6 +4,7 @@ import {
     Text, 
     StatusBar, 
     StyleSheet,
+    ScrollView
 } from 'react-native'
 
 
@@ -12,12 +13,13 @@ import {WrapBannerAndCarousel} from './components'
 
 export function HomeScreen() {
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <StatusBar hidden/>
 
             <WrapBannerAndCarousel/>
+            {/* <WrapBannerAndCarousel/> */}
 
-        </View>
+        </ScrollView>
     )
 }
 
@@ -25,6 +27,6 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
-        paddingTop: StatusBar.currentHeight
+        // paddingTop: StatusBar.currentHeight
     }
 })
