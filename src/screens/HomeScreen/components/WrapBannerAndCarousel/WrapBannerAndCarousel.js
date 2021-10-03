@@ -10,7 +10,7 @@ import {
 import Colors from '../../../../utils/Colors'
 
 //Import component
-import {FavoriteIcon, Carousel} from '../../components';
+import {FavoriteIcon, Carousel} from '../WrapBannerAndCarousel/components';
 
 export function WrapBannerAndCarousel() {
   

@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 
 //Import Colors from utils
-import Colors from '../../../../utils/Colors'
+import Colors from '../../../../../../utils/Colors'
 
 //Import Components
 import {RenderCarouselItem} from '../../components'
@@ -45,6 +45,9 @@ export function Carousel() {
                     data={mockData}
                     horizontal
                     renderItem={() => <RenderCarouselItem/>}
+                    // pagingEnabled={true}
+                    // indicatorStyle='white'
+                    showsHorizontalScrollIndicator={false}
                 />
             </View>
     )
