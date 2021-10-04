@@ -4,29 +4,33 @@ import {
     Text, 
     FlatList,
     StyleSheet,
-    TouchableOpacity 
+    TouchableOpacity,
+    Button 
 } from 'react-native'
 
 //Import Colors from utils
 import Colors from '../../../../../../utils/Colors'
 
+//Import redux hook
+import {useSelector} from 'react-redux'
+
 //Import Components
 import {RenderCarouselItem} from '../../components'
 
 export function Carousel() {
-    const mockData = [
-        {itemName : 1},
-        {itemName : 2},
-        {itemName : 3},
-        {itemName : 4},
-        {itemName : 5},
-        {itemName : 5},
-        {itemName : 5},
-        {itemName : 5},
-        {itemName : 5},
-        {itemName : 5},
-        {itemName : 5},
-    ]
+    const data = useSelector(state => state.productReducer.data.productBrands);
+    
+    function ListHotItem(data) {
+        let listHotItem = [];
+        for(let item of data) {
+            for(let hotProduct of item.products) {
+                if(hotProduct.productIsHotItem) {
+                    listHotItem.push(hotProduct);
+                }
+            }
+        }
+        return listHotItem;
+    }
     return (
         <View style={styles.container}>
                 <View style={styles.wrapTitleCarousel} >
@@ -38,13 +42,13 @@ export function Carousel() {
                             See All
                         </Text>
                     </TouchableOpacity>
-                    
+                    <Button onPress={() => console.log(ListHotItem(data))} title="haha"/>
                 </View>
                 
                 <FlatList 
-                    data={mockData}
+                    data={ListHotItem(data)}
                     horizontal
-                    renderItem={() => <RenderCarouselItem/>}
+                    renderItem={({item}) => <RenderCarouselItem item={item}/>}
                     // pagingEnabled={true}
                     // indicatorStyle='white'
                     showsHorizontalScrollIndicator={false}
