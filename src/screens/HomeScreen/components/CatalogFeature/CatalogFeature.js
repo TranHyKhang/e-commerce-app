@@ -4,7 +4,8 @@ import {
     Text, 
     StyleSheet,
     Dimensions,
-    Image 
+    Image,
+    Button 
 } from 'react-native'
 
 //Import colors from utils
@@ -12,24 +13,59 @@ import Colors from '../../../../utils/Colors';
 
 const {width, height} = Dimensions.get('screen')
 
-export function CatalogFeature() {
+export function CatalogFeature({productBrand, additionName}) {
+
+    function DisplayRightColumn(listItem) {
+        if(listItem.length < 3) {
+            return (
+                <View style={{width: width/2, height: 200}}>
+                    <Image
+                        style={styles.imageStyle}
+                        source={{uri: listItem[1].productImageUrl}}
+                    />
+                </View>
+            )
+        } else {
+            return (
+                <View style={styles.wrapfamousRightItem}>
+                    <View style={styles.famousRightTopItem}>
+                        <Image
+                            style={styles.imageStyle}
+                            source={{uri: listItem[1].productImageUrl}}
+                        />
+                    </View>
+                    <View style={styles.famousRightBottomItem}>
+                        <Image
+                            style={styles.imageStyle}
+                            source={{uri: listItem[2].productImageUrl}}
+                        />
+                    </View>
+                </View>
+            )
+        }
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.wrapCatalogFamous}>
                 <Text style={styles.famousItemTitle}>
-                    ON RUNNING
+                    {productBrand.productBrand.toUpperCase() + ' ' + additionName}
                 </Text>
                 <View style={styles.famousItemBanner}>
-                    {/* <Image 
+                    <Image 
                         style={{width: width, height: '100%'}}
-                        source={{uri: ''}}/> */}
+                        source={{uri: productBrand.productBrandImageUrl}}/>
                 </View>
                 <View style={styles.wrapFamousItem}>
-                    <View style={styles.famousLeftItem}></View>
-                    <View style={styles.wrapfamousRightItem}>
-                        <View style={styles.famousRightTopItem}></View>
-                        <View style={styles.famousRightBottomItem}></View>
+                    <View style={styles.famousLeftItem}>
+                        <Image
+                            style={styles.imageStyle}
+                            source={{uri: productBrand.products[0].productImageUrl}}
+                        />
                     </View>
+                    {
+                        DisplayRightColumn(productBrand.products)
+                    }
                 </View>
             </View>
         </View>
@@ -79,5 +115,9 @@ const styles = StyleSheet.create({
         height: 100,
         backgroundColor: 'purple',
         marginTop: 1
+    },
+    imageStyle: {
+        width: '100%',
+        height: '100%'
     }
 })

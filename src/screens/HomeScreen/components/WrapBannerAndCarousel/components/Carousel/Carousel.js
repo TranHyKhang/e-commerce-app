@@ -18,8 +18,7 @@ import {useSelector} from 'react-redux'
 import {RenderCarouselItem} from '../../components'
 
 export function Carousel() {
-    const data = useSelector(state => state.productReducer.data.productBrands);
-    
+    const data = useSelector(state => state.productReducer.data);
     function ListHotItem(data) {
         let listHotItem = [];
         for(let item of data) {
@@ -42,7 +41,6 @@ export function Carousel() {
                             See All
                         </Text>
                     </TouchableOpacity>
-                    <Button onPress={() => console.log(ListHotItem(data))} title="haha"/>
                 </View>
                 
                 <FlatList 

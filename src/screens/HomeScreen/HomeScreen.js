@@ -104,7 +104,7 @@ const mockData = {
 
 export function HomeScreen() {
 
-    const data = useSelector(state => state.productReducer.data.productBrands);
+    const data = useSelector(state => state.productReducer.data);
 
     const dispatch = useDispatch();
 
@@ -117,7 +117,7 @@ export function HomeScreen() {
             <StatusBar hidden/>
             {/* <Button title='haha' onPress={() => console.log(data)}/> */}
             <WrapBannerAndCarousel/>
-            <CatalogFeature/>
+            <CatalogFeature productBrand={data[0]} additionName="RUNNING"/>
         </ScrollView>
     )
 }
