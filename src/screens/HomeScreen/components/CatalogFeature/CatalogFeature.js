@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { 
     View, 
     Text, 
@@ -10,6 +10,9 @@ import {
 
 //Import colors from utils
 import Colors from '../../../../utils/Colors';
+
+//import redux hook
+import {useSelector} from 'react-redux';
 
 const {width, height} = Dimensions.get('screen')
 

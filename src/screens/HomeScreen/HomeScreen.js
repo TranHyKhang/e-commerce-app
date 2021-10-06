@@ -17,6 +17,7 @@ import {
     CatalogFeature
 } from './components';
 
+
 const mockData = {
     productBrands: [
         {
@@ -102,17 +103,25 @@ const mockData = {
     ]
 }
 
+//Import LoadingScreen
+import {LoadingScreen} from '../LoadingScreen'
+
 export function HomeScreen() {
 
     const data = useSelector(state => state.productReducer.data);
+    const isLoading = useSelector(state => state.productReducer.isLoading);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getProducts(mockData))
+        dispatch(getProducts())
     }, [])
 
     return (
+        isLoading ?
+        <LoadingScreen/>
+        :
+
         <ScrollView style={styles.container}>
             <StatusBar hidden/>
             {/* <Button title='haha' onPress={() => console.log(data)}/> */}

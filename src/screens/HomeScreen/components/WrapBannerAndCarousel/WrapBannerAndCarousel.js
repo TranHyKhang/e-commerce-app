@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { 
     View, 
     Text, 
@@ -12,8 +12,10 @@ import Colors from '../../../../utils/Colors'
 //Import component
 import {FavoriteIcon, Carousel} from '../WrapBannerAndCarousel/components';
 
+import {useSelector} from 'react-redux'
+
 export function WrapBannerAndCarousel() {
-  
+
     return (
         <View style={styles.container}>
             <FavoriteIcon/>
@@ -28,7 +30,7 @@ export function WrapBannerAndCarousel() {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'blue'
+        backgroundColor: 'black'
     },
     screenName: {
         color: Colors.white,
