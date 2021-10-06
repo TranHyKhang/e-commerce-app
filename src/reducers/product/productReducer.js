@@ -2,7 +2,7 @@ import {Types} from '../../actions'
 
 const initialState = {
     data: [],
-    isLoading: false
+    isLoading: true
 }
 
 
