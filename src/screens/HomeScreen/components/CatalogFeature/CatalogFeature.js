@@ -21,7 +21,7 @@ export function CatalogFeature({productBrand, additionName}) {
     function DisplayRightColumn(listItem) {
         if(listItem.length < 3) {
             return (
-                <View style={{width: width/2, height: 200}}>
+                <View style={styles.renderOneItemInRight}>
                     <Image
                         style={styles.imageStyle}
                         source={{uri: listItem[1].productImageUrl}}
@@ -78,7 +78,7 @@ export function CatalogFeature({productBrand, additionName}) {
 const styles = StyleSheet.create({
     container: {
         paddingTop: 40,
-        marginBottom: 20
+        marginBottom: 200
     },
     wrapCatalogFamous: {
 
@@ -101,8 +101,9 @@ const styles = StyleSheet.create({
     famousLeftItem: {
         width: width/2,
         height: 200,
-        backgroundColor: 'green',
-        marginRight: 1
+        backgroundColor: '#EEE',
+        marginRight: 1,
+        paddingBottom: '10%'
     },
     wrapfamousRightItem: {
         marginLeft: 1
@@ -110,17 +111,29 @@ const styles = StyleSheet.create({
     famousRightTopItem: {
         width: width/2,
         height: 100,
-        backgroundColor: 'pink',
-        marginBottom: 1
+        backgroundColor: '#eee',
+        marginBottom: 1,
+        paddingBottom: '10%'
+
     },
     famousRightBottomItem: {
         width: width/2,
         height: 100,
-        backgroundColor: 'purple',
-        marginTop: 1
+        backgroundColor: '#eee',
+        marginTop: 1,
+        paddingBottom: '10%'
+
     },
     imageStyle: {
         width: '100%',
-        height: '100%'
+        height: '100%',
+        
+    },
+    renderOneItemInRight: {
+        width: width/2, 
+        height: 200,
+        backgroundColor: '#eee',
+        paddingBottom: '10%'
+
     }
 })

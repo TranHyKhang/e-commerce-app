@@ -4,10 +4,13 @@ import {
     Text, 
     StyleSheet,
     FlatList,
+    ImageBackground
 } from 'react-native'
 
 //import Colors from utils
 import Colors from '../../../../utils/Colors'
+
+import background from '../../../../utils/Images/a.jpg'
 
 //Import component
 import {FavoriteIcon, Carousel} from '../WrapBannerAndCarousel/components';
@@ -18,9 +21,13 @@ export function WrapBannerAndCarousel() {
 
     return (
         <View style={styles.container}>
+            <ImageBackground 
+                source={background} 
+                style={styles.backgroundImage}
+                resizeMode='cover'
+            />
             <FavoriteIcon/>
             <Text style={styles.screenName}>Discover</Text>
-
             <Carousel/>
             
         </View>
@@ -30,7 +37,7 @@ export function WrapBannerAndCarousel() {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'black'
+        // backgroundColor: 'black'
     },
     screenName: {
         color: Colors.white,
@@ -38,5 +45,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         paddingLeft: 10,
         paddingTop: 10
+    },
+    backgroundImage: {
+        display: 'flex',
+        flex: 1,
+        position: 'absolute',
+        width: '100%',
+        height: '100%'
     }
 })
