@@ -1,7 +1,8 @@
 import {Types} from '../../actions'
 
 const initialState = {
-    data: [],
+    products: [],
+    brands: [],
     isLoading: true
 }
 
@@ -18,7 +19,8 @@ export const productReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                data: action.payload,
+                products: action.payload.products,
+                brands: action.payload.brands
             }
         }
         default: 

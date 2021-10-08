@@ -18,14 +18,12 @@ import {useSelector} from 'react-redux'
 import {RenderCarouselItem} from '../../components'
 
 export function Carousel() {
-    const data = useSelector(state => state.productReducer.data);
+    const data = useSelector(state => state.productReducer.products);
     function ListHotItem(data) {
         let listHotItem = [];
         for(let item of data) {
-            for(let hotProduct of item.products) {
-                if(hotProduct.productIsHotItem) {
-                    listHotItem.push(hotProduct);
-                }
+            if(item.productIsHotItem) {
+                listHotItem.push(item);
             }
         }
         return listHotItem;

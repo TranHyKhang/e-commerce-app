@@ -18,6 +18,10 @@ const {width, height} = Dimensions.get('screen')
 
 export function CatalogFeature({productBrand, additionName}) {
 
+    const products = useSelector(state => state.productReducer.products);
+
+    let productsFiltered = products.filter(item => item.productBrandID == productBrand._id)
+
     function DisplayRightColumn(listItem) {
         if(listItem.length < 3) {
             return (
@@ -63,11 +67,11 @@ export function CatalogFeature({productBrand, additionName}) {
                     <View style={styles.famousLeftItem}>
                         <Image
                             style={styles.imageStyle}
-                            source={{uri: productBrand.products[0].productImageUrl}}
+                            source={{uri: productsFiltered[0].productImageUrl}}
                         />
                     </View>
                     {
-                        DisplayRightColumn(productBrand.products)
+                        DisplayRightColumn(productsFiltered)
                     }
                 </View>
             </View>

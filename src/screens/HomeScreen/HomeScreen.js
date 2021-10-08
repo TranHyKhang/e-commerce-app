@@ -108,7 +108,7 @@ import {LoadingScreen} from '../LoadingScreen'
 
 export function HomeScreen() {
 
-    const data = useSelector(state => state.productReducer.data);
+    const brands = useSelector(state => state.productReducer.brands)
     const isLoading = useSelector(state => state.productReducer.isLoading);
 
     const dispatch = useDispatch();
@@ -124,9 +124,8 @@ export function HomeScreen() {
 
         <ScrollView style={styles.container}>
             <StatusBar hidden/>
-            {/* <Button title='haha' onPress={() => console.log(data)}/> */}
             <WrapBannerAndCarousel/>
-            <CatalogFeature productBrand={data[0]} additionName="RUNNING"/>
+            <CatalogFeature  productBrand={brands[0]}  additionName="RUNNING"/>
         </ScrollView>
     )
 }
@@ -136,6 +135,5 @@ const styles = StyleSheet.create({
         display: 'flex',
         flex: 1,
         backgroundColor: 'white'
-        // paddingTop: StatusBar.currentHeight
     }
 })
