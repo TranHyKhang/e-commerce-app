@@ -41,6 +41,7 @@ export function TabNavigator() {
                     borderRadius: 30
                     
                 },
+                tabBarHideOnKeyboard: true,
                 headerShown: false,
                 tabBarIcon: ({focused}) => {
                     // if(route.name == 'HomeStack') {
