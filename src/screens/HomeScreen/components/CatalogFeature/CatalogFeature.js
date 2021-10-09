@@ -82,7 +82,7 @@ export function CatalogFeature({productBrand, additionName}) {
 const styles = StyleSheet.create({
     container: {
         paddingTop: 40,
-        marginBottom: 200
+        // marginBottom: 200
     },
     wrapCatalogFamous: {
 
