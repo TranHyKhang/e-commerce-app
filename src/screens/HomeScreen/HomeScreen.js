@@ -2,7 +2,8 @@ import React, {useEffect} from 'react'
 import {
     StatusBar, 
     StyleSheet,
-    ScrollView, Button
+    ScrollView, Button,
+    View
 } from 'react-native'
 
 //Import redux hook
@@ -14,7 +15,8 @@ import {getProducts} from '../../actions'
 //Import component
 import {
     WrapBannerAndCarousel,
-    CatalogFeature
+    CatalogFeature,
+    FamousProduct
 } from './components';
 
 
@@ -108,9 +110,10 @@ import {LoadingScreen} from '../LoadingScreen'
 
 export function HomeScreen() {
 
+    const products = useSelector(state => state.productReducer.products);
     const brands = useSelector(state => state.productReducer.brands)
     const isLoading = useSelector(state => state.productReducer.isLoading);
-
+    const specialproductProduct = products.filter(item => item.productIsSpecialItem == true)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -124,8 +127,13 @@ export function HomeScreen() {
 
         <ScrollView style={styles.container}>
             <StatusBar hidden/>
-            <WrapBannerAndCarousel/>
-            <CatalogFeature  productBrand={brands[0]}  additionName="RUNNING"/>
+            <View style={{marginBottom: 20}}>
+                <WrapBannerAndCarousel/>
+                <CatalogFeature  productBrand={brands[0]}  additionName="RUNNING"/>
+                <FamousProduct item={specialproductProduct[0]}/>
+            </View>
+            
+
         </ScrollView>
     )
 }
@@ -134,6 +142,6 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
     }
 })
