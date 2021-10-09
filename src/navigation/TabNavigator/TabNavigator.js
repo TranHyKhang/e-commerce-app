@@ -34,7 +34,7 @@ export function TabNavigator() {
                 tabBarStyle: {
                     backgroundColor: Colors.bottom_tab_gray,
                     position: 'absolute',
-                    bottom: 15,
+                    bottom: 5,
                     left: 40, 
                     right: 40,
                     height: 60,
