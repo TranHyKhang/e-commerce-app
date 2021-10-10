@@ -34,19 +34,15 @@ export function TabNavigator() {
                 tabBarStyle: {
                     backgroundColor: Colors.bottom_tab_gray,
                     position: 'absolute',
-                    bottom: 5,
+                    bottom: 4,
                     left: 40, 
                     right: 40,
                     height: 60,
                     borderRadius: 30
                     
                 },
-                tabBarHideOnKeyboard: true,
                 headerShown: false,
                 tabBarIcon: ({focused}) => {
-                    // if(route.name == 'HomeStack') {
-                    //     return <RenderTabBarItem name='compass' size={30} title='Discover'/>
-                    // }
                     switch(route.name) {
                         case 'HomeStack':
                             return <RenderTabBarItem 
