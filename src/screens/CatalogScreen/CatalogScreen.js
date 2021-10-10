@@ -3,7 +3,8 @@ import {
     View, 
     Text,
     StyleSheet,
-    Button
+    Button,
+    FlatList
 } from 'react-native';
 
 //Import redux hook
@@ -23,6 +24,12 @@ export function CatalogScreen() {
         <View style={styles.container}>
             {/* <Button title="Haha" onPress={() => console.log(brands)}/> */}
             <SearchBar/>
+            <View style={styles.wrapCatalogContent}>
+                {/* <FlatList
+                    data={brands}
+                    renderItem={({item}) => }
+                /> */}
+            </View>
         </View>
     )
 }
@@ -32,5 +39,8 @@ const styles = StyleSheet.create({
         display: 'flex',
         flex: 1,
         backgroundColor: Colors.white
+    },
+    wrapCatalogContent: {
+        flex: 9.2
     }
 })
