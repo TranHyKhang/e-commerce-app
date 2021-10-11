@@ -21,12 +21,17 @@ import {RenderTabBarItem} from './components'
 //Import colors from utils
 import Colors from '../../utils/Colors'
 
+//Import redux hook
+import {useSelector} from 'react-redux'
 
 
 //Declare tab navigator
 const Tab = createBottomTabNavigator();
 
 export function TabNavigator() {
+
+    const isScollDown = useSelector(state => state.tabNavigatorReducer.isScrollDown);
+
     return (
         <Tab.Navigator
             screenOptions={({route}) => ({
@@ -38,7 +43,8 @@ export function TabNavigator() {
                     left: 40, 
                     right: 40,
                     height: 60,
-                    borderRadius: 30
+                    borderRadius: 30,
+                    opacity: isScollDown ? 0 : 1
                     
                 },
                 headerShown: false,

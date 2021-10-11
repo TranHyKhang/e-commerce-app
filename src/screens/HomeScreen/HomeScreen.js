@@ -10,7 +10,11 @@ import {
 import {useDispatch, useSelector} from 'react-redux'
 
 //Import Action 
-import {getProducts} from '../../actions'
+import {
+    getProducts,
+    ScrollDownEvent,
+    ScrollUpEvent
+} from '../../actions'
 
 //Import component
 import {
@@ -116,16 +120,30 @@ export function HomeScreen() {
     const specialproductProduct = products.filter(item => item.productIsSpecialItem == true)
     const dispatch = useDispatch();
 
+    let offSet = 0;
+
     useEffect(() => {
         dispatch(getProducts())
     }, [])
+
+    function onScroll(event) {
+        let currentOffSet = event.nativeEvent.contentOffset.y;
+        let direction = currentOffSet > offSet ? 'down' : 'up';
+        offSet = currentOffSet;
+        // console.log(direction);
+        if(direction == 'down') {
+            dispatch(ScrollDownEvent())
+        } else {
+            dispatch(ScrollUpEvent())
+        }
+    }
 
     return (
         isLoading ?
         <LoadingScreen/>
         :
 
-        <ScrollView style={styles.container}>
+        <ScrollView style={styles.container} onScroll={onScroll}>
             <StatusBar  barStyle='light-content' hidden/>
             <View style={{marginBottom: 20}}>
                 <WrapBannerAndCarousel/>
