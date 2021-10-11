@@ -8,17 +8,20 @@ import {
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
+import Colors from '../../../../utils/Colors'
+
 export function SearchBar() {
     return (
         <View style={styles.container}>
             <AntDesign 
                 name="search1" 
-                size={25} 
+                size={20} 
                 style={styles.searchIcon}
+                color={Colors.sub_title_color}
             />
             <TextInput 
                 style={styles.textInputStyle}
-                placeholder='Brand, '
+                placeholder='Brand, Models, Collectionm, ...'
             />
         </View>
     )
@@ -26,13 +29,13 @@ export function SearchBar() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 0.8,
+        flex: 0.6,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#eee',
+        backgroundColor: '#DDD',
         margin: 20,
-        borderRadius: 20
+        borderRadius: 10,
     },
     searchIcon: {
         padding: 10,
@@ -43,7 +46,7 @@ const styles = StyleSheet.create({
         // paddingRight: 10,
         // paddingBottom: 10,
         // paddingLeft: 0,
-        backgroundColor: '#eee',
+        backgroundColor: '#DDD',
         borderRadius: 20,
         color: '#424242',
     }

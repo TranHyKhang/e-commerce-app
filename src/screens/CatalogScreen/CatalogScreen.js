@@ -4,7 +4,8 @@ import {
     Text,
     StyleSheet,
     Button,
-    FlatList
+    FlatList,
+    StatusBar
 } from 'react-native';
 
 //Import redux hook
@@ -22,13 +23,24 @@ export function CatalogScreen() {
 
     return (
         <View style={styles.container}>
+            {/* <StatusBar translucent backgroundColor="transparent" barStyle='dark-content'/> */}
             {/* <Button title="Haha" onPress={() => console.log(brands)}/> */}
             <SearchBar/>
             <View style={styles.wrapCatalogContent}>
-                {/* <FlatList
+                <Text
+                    style={{
+                        color: Colors.sub_title_color,
+                        fontWeight: '500',
+                        marginLeft: 20,
+                        marginBottom: 10
+                    }}
+                >
+                    BRANDS
+                </Text>
+                <FlatList
                     data={brands}
-                    renderItem={({item}) => }
-                /> */}
+                    renderItem={({item}) => <RenderBrandItem item={item}/>}
+                />
             </View>
         </View>
     )
@@ -38,7 +50,8 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
-        backgroundColor: Colors.white
+        backgroundColor: Colors.white,
+        paddingTop: 30
     },
     wrapCatalogContent: {
         flex: 9.2

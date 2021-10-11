@@ -5,5 +5,5 @@ export default {
     tab_button_focused_blue: '#0cc3c5',
     pink_fire: '#e32577',
     title_color: '#333333',
-    sub_title_color: '#acacac'
+    sub_title_color: '#8a8a8a'
 }

@@ -126,7 +126,7 @@ export function HomeScreen() {
         :
 
         <ScrollView style={styles.container}>
-            <StatusBar hidden/>
+            <StatusBar  barStyle='light-content' hidden/>
             <View style={{marginBottom: 20}}>
                 <WrapBannerAndCarousel/>
                 <CatalogFeature  productBrand={brands[0]}  additionName="RUNNING"/>
