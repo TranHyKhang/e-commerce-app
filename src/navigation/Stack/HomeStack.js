@@ -6,7 +6,7 @@ import { View, Text } from 'react-native'
 import {createStackNavigator} from '@react-navigation/stack'
 
 //Import Screen
-import { HomeScreen } from '../screens';
+import { HomeScreen } from '../../screens';
 
 const Stack = createStackNavigator();
 

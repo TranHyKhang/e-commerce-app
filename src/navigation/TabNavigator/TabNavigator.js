@@ -5,15 +5,11 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 //Import screens
 import {
-    CatalogScreen,
     ProfileScreen
 } from '../../screens';
 
-//Import icon
-import FeatherIcon from 'react-native-vector-icons/Feather'
-
 //Import Stack
-import {HomeStack} from '../HomeStack'
+import {HomeStack, CatalogStack} from '../Stack'
 
 //import components
 import {RenderTabBarItem} from './components'
@@ -57,7 +53,7 @@ export function TabNavigator() {
                                 title='Discover'
                                 color={focused ? Colors.tab_button_focused_blue : Colors.white}
                                 />
-                        case 'CatalogScreen':
+                        case 'CatalogStack':
                             return <RenderTabBarItem 
                                 name='search' 
                                 size={30} 
@@ -76,7 +72,7 @@ export function TabNavigator() {
             })}
         >
             <Tab.Screen component={HomeStack} name='HomeStack'/>
-            <Tab.Screen component={CatalogScreen} name='CatalogScreen'/>
+            <Tab.Screen component={CatalogStack} name='CatalogStack'/>
             <Tab.Screen component={ProfileScreen} name='ProfileScreen'/>
         </Tab.Navigator>
 
