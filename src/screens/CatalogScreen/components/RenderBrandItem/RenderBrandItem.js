@@ -9,11 +9,16 @@ import {
 
 import Colors from '../../../../utils/Colors'
 
+import {useNavigation} from '@react-navigation/native'
+
 export function RenderBrandItem({item}) {
+
+    const navigation = useNavigation();
+
     return (
         <TouchableOpacity
             activeOpacity={1}
-            onPress={() => console.log('haha')}
+            onPress={() => navigation.navigate('BrandDetailScreen', {item})}
         >
             <View style={styles.container}>
                 <Image 
@@ -38,7 +43,7 @@ const styles = StyleSheet.create({
         paddingRight: 20,
         borderTopWidth: 1,
         borderTopColor: '#ddd'
-        // backgroundColor: 'red'
+        // backgroundColor: 'red',
     },
     imageStyle: {
         width: 35,
