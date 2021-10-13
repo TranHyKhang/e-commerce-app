@@ -3,6 +3,7 @@ import {Types} from '../../actions'
 const initialState = {
     products: [],
     brands: [],
+    favoriteProducts: [],
     isLoading: true
 }
 
@@ -23,6 +24,19 @@ export const productReducer = (state = initialState, action) => {
                 brands: action.payload.brands
             }
         }
+        case Types.ADD_FAVORITE_ITEM:
+            return {
+                ...state,
+                favoriteProducts: [
+                    ...state.favoriteProducts,
+                    action.payload
+                ]
+            }
+        case Types.REMOVE_FAVORITE_ITEM:
+            return {
+                ...state,
+                favoriteProducts: state.favoriteProducts.filter(item => item !== action.payload)
+            }
         default: 
             return state;
     }
