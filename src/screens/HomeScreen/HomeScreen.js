@@ -1,20 +1,20 @@
-import React, {useEffect} from 'react'
+import React, {useEffect} from 'react';
 import {
     StatusBar, 
     StyleSheet,
     ScrollView, Button,
     View
-} from 'react-native'
+} from 'react-native';
 
 //Import redux hook
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux';
 
 //Import Action 
 import {
     getProducts,
     ScrollDownEvent,
-    ScrollUpEvent
-} from '../../actions'
+    ScrollUpEvent,
+} from '../../actions';
 
 //Import component
 import {
@@ -120,23 +120,30 @@ export function HomeScreen() {
     const specialproductProduct = products.filter(item => item.productIsSpecialItem == true)
     const dispatch = useDispatch();
 
-    let offSet = 0;
 
-    useEffect(() => {
-        dispatch(getProducts())
-    }, [])
+    /* 
+    --------------------------------------------    
+    Set the tab navigator hide when scroll down
+    */
+    let offSet = 0;
 
     function onScroll(event) {
         let currentOffSet = event.nativeEvent.contentOffset.y;
         let direction = currentOffSet > offSet ? 'down' : 'up';
         offSet = currentOffSet;
-        // console.log(direction);
         if(direction == 'down') {
             dispatch(ScrollDownEvent())
         } else {
             dispatch(ScrollUpEvent())
         }
     }
+    //-------------------------------------------
+
+    useEffect(() => {
+        dispatch(getProducts())
+    }, [])
+
+    
 
     return (
         isLoading ?

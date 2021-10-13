@@ -5,10 +5,11 @@ import {RenderProductItem} from '../../components'
 
 export function RenderProducts({products}) {
     return (
-        <View>
+        <View
+            style={{ display: 'flex'}}
+        >
             <FlatList
                 numColumns={2}
-                nestedScrollEnabled
                 data={products}
                 renderItem={({item}) => <RenderProductItem item={item}/>}
                 keyExtractor={(item) => item._id}
