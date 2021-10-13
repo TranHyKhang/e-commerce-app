@@ -20,3 +20,31 @@ export const getProducts = () => {
         }
     }
 }
+
+export const AddFavoriteItem = (item) => {
+    return (dispatch) => {
+        try {
+            dispatch({
+                type: Types.ADD_FAVORITE_ITEM,
+                payload: item._id
+            })
+        }
+        catch(err) {
+            console.log(err);
+        }
+    }
+}
+
+export const RemoveFavoriteItem = (item) => {
+    return (dispatch) => {
+        try {
+            dispatch({
+                type: Types.REMOVE_FAVORITE_ITEM,
+                payload: item._id
+            })
+        }
+        catch(err) {
+            console.log(err);
+        }
+    }
+}
