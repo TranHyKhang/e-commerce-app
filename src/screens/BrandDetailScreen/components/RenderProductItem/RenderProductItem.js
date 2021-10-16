@@ -14,19 +14,26 @@ import Colors from '../../../../utils/Colors';
 
 import {
     AddFavoriteItem, 
-    RemoveFavoriteItem
+    RemoveFavoriteItem,
+    HideTabBar
 } from '../../../../actions';
 
 import {
     useSelector, 
     useDispatch
-} from 'react-redux'
+} from 'react-redux';
+
+import {useNavigation} from '@react-navigation/native';
+
+
 
 const {width} = Dimensions.get('screen');
 
 export function RenderProductItem({item}) {
 
     const dispatch = useDispatch();
+
+    const navigation = useNavigation();
 
     const favoriteProducts = useSelector(state => state.productReducer.favoriteProducts);
 
@@ -41,7 +48,12 @@ export function RenderProductItem({item}) {
     }
 
     return (
-        <TouchableOpacity>
+        <TouchableOpacity
+            onPress={() => {
+                navigation.navigate('ProductDetailScreen', {item});
+                dispatch(HideTabBar());
+            }}
+        >
             <View style={styles.container}>
                 {
                     renderFavoriteIcon(favoriteProducts, item) 
