@@ -27,6 +27,9 @@ const Tab = createBottomTabNavigator();
 export function TabNavigator() {
 
     const isScollDown = useSelector(state => state.tabNavigatorReducer.isScrollDown);
+    const isHide = useSelector(state => state.tabNavigatorReducer.isHide);
+
+
 
     return (
         <Tab.Navigator
@@ -40,7 +43,7 @@ export function TabNavigator() {
                     right: 40,
                     height: 60,
                     borderRadius: 30,
-                    opacity: isScollDown ? 0 : 1
+                    opacity:  isHide ? 0 : 1
                     
                 },
                 headerShown: false,
