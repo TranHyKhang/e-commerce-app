@@ -1,7 +1,7 @@
 import {Types} from '../../actions'
 
 const initialState = {
-    isScrollDown: false
+    isHide: false,
 }
 
 
@@ -11,14 +11,24 @@ export const tabNavigatorReducer = (state = initialState, action) => {
         case Types.SCROLL_DOWN: 
             return {
                 ...state,
-                isScrollDown: true
+                isHide: true
             }
         case Types.SCROLL_UP: {
             return {
                 ...state,
-                isScrollDown: false
+                isHide: false
             }
         }
+        case Types.HIDE_TAB_BAR:
+            return {
+                ...state,
+                isHide: action.payload
+            }
+        case Types.UN_HIDE_TAB_BAR:
+            return {
+                ...state,
+                isHide: action.payload
+            }
         default: 
             return state;
     }

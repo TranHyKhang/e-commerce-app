@@ -8,5 +8,7 @@ export const Types = {
 
     //Scroll down event type
     SCROLL_DOWN: 'SCROLL_DOWN',
-    SCROLL_UP: 'SCROLL_UP'
+    SCROLL_UP: 'SCROLL_UP',
+    HIDE_TAB_BAR: 'HIDE_TAB_BAR',
+    UN_HIDE_TAB_BAR: 'UN_HIDE_TAB_BAR'
 }

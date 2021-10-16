@@ -28,3 +28,31 @@ export const ScrollUpEvent = () => {
         }
     }
 }
+
+export const HideTabBar = () => {
+    return (dispatch) => {
+        try {
+            dispatch({
+                type: Types.HIDE_TAB_BAR,
+                payload: true
+            })
+        }
+        catch(err) {
+            console.log(err);
+        }
+    }
+}
+
+export const UnHideTabBar = () => {
+    return (dispatch) => {
+        try {
+            dispatch({
+                type: Types.HIDE_TAB_BAR,
+                payload: false
+            })
+        }
+        catch(err) {
+            console.log(err);
+        }
+    }
+}
