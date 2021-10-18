@@ -3,3 +3,4 @@ export * from './CatalogScreen';
 export * from './ProfileScreen';
 export * from './BrandDetailScreen';
 export * from './ProductDetailScreen';
+export * from './OrderScreen';

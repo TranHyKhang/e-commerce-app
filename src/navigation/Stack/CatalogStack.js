@@ -6,7 +6,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {
     CatalogScreen,
     BrandDetailScreen,
-    ProductDetailScreen
+    ProductDetailScreen,
+    OrderScreen
 } from '../../screens'
 
 const Stack = createStackNavigator();
@@ -21,6 +22,7 @@ export const CatalogStack = () => {
             <Stack.Screen name='CatalogScreen' component={CatalogScreen}/>
             <Stack.Screen name='BrandDetailScreen' component={BrandDetailScreen}/>
             <Stack.Screen name='ProductDetailScreen' component={ProductDetailScreen}/>
+            <Stack.Screen name='OrderScreen' component={OrderScreen}/>
         </Stack.Navigator>
     )
 }
