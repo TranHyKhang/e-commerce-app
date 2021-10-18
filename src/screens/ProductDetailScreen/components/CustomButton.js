@@ -4,9 +4,12 @@ import Colors from '../../../utils/Colors';
 
 const {width, height} = Dimensions.get('screen');
 
-export function CustomButton() {
+export function CustomButton({_handleEvent}) {
     return (
-        <TouchableOpacity activeOpacity={1}>
+        <TouchableOpacity 
+            activeOpacity={1}
+            onPress={_handleEvent}
+        >
             <View
                 style={{
                     display: 'flex',

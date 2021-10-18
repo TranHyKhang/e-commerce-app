@@ -118,7 +118,7 @@ export function ProductDetailScreen({route}) {
                 </View>
             </View>
 
-            <CustomButton/>
+            <CustomButton _handleEvent={() => navigation.navigate('OrderScreen')}/>
         </ScrollView>
     )
 }
