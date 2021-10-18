@@ -10,7 +10,7 @@ import {
 //import Colors from utils
 import Colors from '../../../../utils/Colors'
 
-import background from '../../../../utils/Images/a.jpg'
+import background from '../../../../utils/Images/background.jpg'
 
 //Import component
 import {FavoriteIcon, Carousel} from '../WrapBannerAndCarousel/components';
