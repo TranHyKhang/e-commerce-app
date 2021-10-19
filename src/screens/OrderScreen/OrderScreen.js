@@ -1,9 +1,7 @@
 import React from 'react'
 import { View, Text, Button } from 'react-native'
 
-export function OrderScreen({route}) {
-
-    const {item} = route.params;
+export function OrderScreen() {
 
     return (
         <View>
