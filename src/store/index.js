@@ -4,12 +4,14 @@ import thunk from 'redux-thunk'
 //Import reducers
 import {
     productReducer,
-    tabNavigatorReducer
+    tabNavigatorReducer,
+    authReducer
 } from '../reducers'
 
 const rootReducer = combineReducers({
     productReducer: productReducer,
-    tabNavigatorReducer
+    tabNavigatorReducer,
+    authReducer
 });
 
 export default store = createStore(rootReducer, applyMiddleware(thunk));
