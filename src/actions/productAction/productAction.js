@@ -8,7 +8,7 @@ export const getProducts = () => {
     return async(dispatch) => {
         dispatch({type: Types.GET_ALL_PRODUCT_REQUEST});
         try {
-            let data = await axios.get(API_URL);
+            let data = await axios.get(API_URL + '/api/products');
             dispatch({
                 type: Types.GET_ALL_PRODUCT_SUCCESS, 
                 payload: data.data,
