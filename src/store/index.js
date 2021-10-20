@@ -5,13 +5,15 @@ import thunk from 'redux-thunk'
 import {
     productReducer,
     tabNavigatorReducer,
-    authReducer
+    authReducer,
+    bodyTabReducer
 } from '../reducers'
 
 const rootReducer = combineReducers({
     productReducer: productReducer,
     tabNavigatorReducer,
-    authReducer
+    authReducer,
+    bodyTabReducer
 });
 
 export default store = createStore(rootReducer, applyMiddleware(thunk));
