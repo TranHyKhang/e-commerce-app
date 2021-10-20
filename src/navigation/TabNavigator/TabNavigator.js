@@ -43,7 +43,8 @@ export function TabNavigator() {
                     right: 40,
                     height: 60,
                     borderRadius: 30,
-                    opacity:  isHide ? 0 : 1
+                    // opacity:  isHide ? 0 : 1,
+                    display: isHide ? 'none' : 'flex'
                     
                 },
                 headerShown: false,
