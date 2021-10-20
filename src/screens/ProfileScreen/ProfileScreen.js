@@ -1,22 +1,30 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react';
 import { 
     View, 
     Text,
     StyleSheet,
     Button
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import {useSelector, useDispatch} from 'react-redux';
 
-import {useSelector, useDispatch} from 'react-redux'
+//Loading screen
+import {LoadingScreen} from '../LoadingScreen'
 
+//Component
+import {HeaderDisplayInfo, BodyTab} from './components';
+
+//Actions
 import {GetUserInfo} from '../../actions'
 
+//Colors
 import Colors from '../../utils/Colors';
 
 export function ProfileScreen() {
 
     const user = useSelector(state => state.authReducer.user);
+    const isLoading = useSelector(state => state.authReducer.isLoading);
     const dispatch = useDispatch();
     const [token, setToken] = useState('');
     async function StoreToken() {
@@ -36,18 +44,20 @@ export function ProfileScreen() {
             console.log(err);
         }
     }
+
+    useEffect(() => {
+        dispatch(GetUserInfo());
+        console.log('useEffect run')
+    },[])
     
     return (
+        isLoading ?
+        <LoadingScreen/>
+        :
+
         <View style={styles.container}>
-            <Text>ProfileScreen</Text>
-
-            <Button title='Add token to async storage' onPress={() => StoreToken()}/>
-            <Button title='Add token to async storage' onPress={() => GetToken()}/>
-            <Button title="See token" onPress={() => console.log(token)}/>
-
-            <Button title='Get User Info' onPress={() => dispatch(GetUserInfo())}/>
-
-            <Button title='Log data' onPress={() => console.log(user)}/>
+            <HeaderDisplayInfo/>
+            <BodyTab/>
         </View>
     )
 }
