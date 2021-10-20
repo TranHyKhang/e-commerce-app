@@ -14,7 +14,7 @@ export const GetUserInfo = () => {
                 }
             });
 
-            dispatch({type: Types.GET_USER_INFO_SUCCESS, payload: data});
+            dispatch({type: Types.GET_USER_INFO_SUCCESS, payload: data.data});
         } catch(err) {
             console.log(err);
         }

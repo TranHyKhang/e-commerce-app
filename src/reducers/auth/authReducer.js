@@ -2,7 +2,7 @@ import {Types} from '../../actions'
 
 const initialState = {
     user: null,
-    isLoading: false
+    isLoading: true
 }
 
 export const authReducer = (state = initialState, action) => {
