@@ -9,7 +9,11 @@ import {
 } from '../../screens';
 
 //Import Stack
-import {HomeStack, CatalogStack} from '../Stack'
+import {
+    HomeStack, 
+    CatalogStack,
+    ProfileStack
+} from '../Stack'
 
 //import components
 import {RenderTabBarItem} from './components'
@@ -64,7 +68,7 @@ export function TabNavigator() {
                                 title='Catalog'
                                 color={focused ? Colors.tab_button_focused_blue : Colors.white}
                                 />
-                        case 'ProfileScreen':
+                        case 'ProfileStack':
                             return <RenderTabBarItem 
                                 name='user' 
                                 size={30} 
@@ -77,7 +81,7 @@ export function TabNavigator() {
         >
             <Tab.Screen component={HomeStack} name='HomeStack'/>
             <Tab.Screen component={CatalogStack} name='CatalogStack'/>
-            <Tab.Screen component={ProfileScreen} name='ProfileScreen'/>
+            <Tab.Screen component={ProfileStack} name='ProfileStack'/>
         </Tab.Navigator>
 
     )

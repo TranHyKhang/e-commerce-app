@@ -8,6 +8,8 @@ import {
 
 import Colors from '../../../../utils/Colors';
 
+import {useNavigation} from '@react-navigation/native'
+
 import {DEFAULT_IMAGE_URL} from '../../../../utils/config';
 
 import Antdesign from 'react-native-vector-icons/AntDesign'
@@ -16,13 +18,17 @@ import {useSelector} from 'react-redux';
 
 export function HeaderDisplayInfo() {
 
-    const user = useSelector(state => state.authReducer.user)
+    const user = useSelector(state => state.authReducer.user);
+
+    const navigation = useNavigation();
 
 
     return (
         <View style={styles.container}>
             <View style={styles.wrapHeaderFeature}>
-                <TouchableOpacity> 
+                <TouchableOpacity
+                    onPress={() => navigation.navigate('CartScreen')}
+                > 
                     <Antdesign 
                         name="shoppingcart" 
                         size={30} 
