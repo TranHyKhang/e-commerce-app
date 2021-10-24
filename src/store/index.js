@@ -6,14 +6,16 @@ import {
     productReducer,
     tabNavigatorReducer,
     authReducer,
-    bodyTabReducer
+    bodyTabReducer,
+    cartReducer
 } from '../reducers'
 
 const rootReducer = combineReducers({
     productReducer: productReducer,
     tabNavigatorReducer,
     authReducer,
-    bodyTabReducer
+    bodyTabReducer,
+    cartReducer
 });
 
 export default store = createStore(rootReducer, applyMiddleware(thunk));
