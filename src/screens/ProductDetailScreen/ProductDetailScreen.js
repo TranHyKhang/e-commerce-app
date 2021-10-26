@@ -17,7 +17,10 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
 
 //Redux
-import { UnHideTabBar} from '../../actions';
+import { 
+    UnHideTabBar,
+    AddToCart
+} from '../../actions';
 
 import {useDispatch} from 'react-redux';
 
@@ -118,7 +121,7 @@ export function ProductDetailScreen({route}) {
                 </View>
             </View>
 
-            <CustomButton _handleEvent={() => navigation.navigate('OrderScreen')}/>
+            <CustomButton _handleEvent={() => dispatch(AddToCart(item._id))}/>
         </ScrollView>
     )
 }

@@ -6,8 +6,8 @@ export function OrderScreen() {
     return (
         <View>
             <Text>OrderScreenm</Text>
-            <Text>{item._id}</Text>
-            <Button title="haha" onPress={() => console.log(item)}/>
+            {/* <Text>{item._id}</Text>
+            <Button title="haha" onPress={() => console.log(item)}/> */}
         </View>
     )
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import Colors from '../../../utils/Colors';
 
+
 const {width, height} = Dimensions.get('screen');
 
 export function CustomButton({_handleEvent}) {
@@ -27,7 +28,7 @@ export function CustomButton({_handleEvent}) {
                             fontWeight: '700'
                         }}
                     >
-                        Try On
+                        Add To Cart
                     </Text>
                 </View>
             </View>

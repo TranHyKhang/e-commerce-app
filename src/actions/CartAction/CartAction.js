@@ -18,6 +18,7 @@ export const AddToCart = (productID) => {
         let arrProductID = await AsyncStorage.getItem('cart');
         if(arrProductID === null) {
             dispatch({type: Types.ADD_TO_CART_REQUEST})
+            console.log('cart null')
             try {
                 let data = [productID];
                 let jsonValue = JSON.stringify(data);
@@ -27,7 +28,7 @@ export const AddToCart = (productID) => {
                 console.log(err);
             }
         } else {
-            dispatch({})
+            dispatch({type: Types.ADD_TO_CART_REQUEST})
             try {
                 let data = await AsyncStorage.getItem('cart');
                 let arrProductID = JSON.parse(data);

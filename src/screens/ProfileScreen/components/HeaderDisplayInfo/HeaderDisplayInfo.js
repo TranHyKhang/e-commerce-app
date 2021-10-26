@@ -14,7 +14,9 @@ import {DEFAULT_IMAGE_URL} from '../../../../utils/config';
 
 import Antdesign from 'react-native-vector-icons/AntDesign'
 
+//redux
 import {useSelector} from 'react-redux';
+
 
 export function HeaderDisplayInfo() {
 
