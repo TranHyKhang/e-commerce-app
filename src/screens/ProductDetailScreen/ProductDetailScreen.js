@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { 
     View, 
     Text, 
@@ -7,7 +7,7 @@ import {
     StyleSheet,
     Dimensions, 
     TouchableOpacity, 
-    ScrollView 
+    ScrollView, FlatList
 } from 'react-native';
 
 import Colors from '../../utils/Colors';
@@ -25,11 +25,16 @@ import {
 import {useDispatch} from 'react-redux';
 
 //Component
-import {CustomButton} from './components'
+import {
+    CustomButton,
+    RenderSizeItem
+} from './components'
 
 const {width,height} = Dimensions.get('screen');
 
 export function ProductDetailScreen({route}) {
+
+    const [size , setSize] = useState('');
 
     const {item} = route.params;
 
@@ -84,6 +89,24 @@ export function ProductDetailScreen({route}) {
             </View>
 
             <View style={styles.wrapPrice}>
+                <Text
+                    style={{
+                        fontWeight: '900',
+                        marginBottom: 10
+                    }}
+                >
+                   SIZE
+                </Text>
+                <FlatList
+                    
+                    horizontal
+                    data={item.productSizes}
+                    renderItem={({item}) => <RenderSizeItem item={item} _handleTouchEvent={setSize} size={size}/>}
+                />
+
+            </View>
+
+            <View style={styles.wrapPrice}>
 
                 <Text
                     style={{
@@ -121,7 +144,9 @@ export function ProductDetailScreen({route}) {
                 </View>
             </View>
 
-            <CustomButton _handleEvent={() => dispatch(AddToCart(item._id))}/>
+            
+
+            <CustomButton _handleEvent={() => dispatch(AddToCart(item._id, size))}/>
         </ScrollView>
     )
 }

@@ -3,7 +3,8 @@ import {
     View, 
     Text,
     StyleSheet,
-    Button
+    Button, 
+    FlatList
 } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -19,7 +20,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {GetCart} from '../../actions';
 
 //Component
-import {Header} from './components';
+import {Header, RenderCartItem} from './components';
 
 export function CartScreen() {
 
@@ -44,6 +45,10 @@ export function CartScreen() {
 
         <View style={styles.container}>
             <Header/>
+            <FlatList
+                data={carts}
+                renderItem={({item}) => <RenderCartItem item={item}/>}
+            />
             <Button title='See cart' onPress={() => console.log(carts)}/>
             <Button title='Clear cart' onPress={() => clearCart()}/>
         </View>
