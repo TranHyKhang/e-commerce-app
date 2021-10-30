@@ -10,12 +10,16 @@ import {LoadingScreen} from '../../LoadingScreen';
 
 import {QuantityButton} from '../components';
 
-import {useSelector} from 'react-redux';
+//redux
+import {useSelector, useDispatch} from 'react-redux';
+import {UpdateProductQuantity} from '../../../actions';
+
 import Colors from '../../../utils/Colors';
 
-export function RenderCartItem({item}) {
+export function RenderCartItem({item, index}) {
 
     const products = useSelector(state => state.productReducer.products);
+    const dispatch = useDispatch();
 
     const [product, setProduct] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -30,16 +34,19 @@ export function RenderCartItem({item}) {
 
     function increaseQuantity() {
         setQuantity(quantity + 1);
+        dispatch(UpdateProductQuantity(quantity + 1, index))
     }
 
     function decreaseQuantity() {
         setQuantity(quantity - 1);
+        dispatch(UpdateProductQuantity(quantity - 1, index))
+
     }
 
     useEffect(() => {
-        setProduct(GetProductByID(item.productID))
-        setIsLoading(false);
-    },[])
+        setProduct(GetProductByID(item.productID));
+        setIsLoading(false)
+    },[product])
     
     return (
         isLoading ?
@@ -60,6 +67,7 @@ export function RenderCartItem({item}) {
         }}>
             <View style={styles.container}>
                 <Image source={{uri: product.productImageUrl}} style={styles.productImage}/>
+                
                 <View style={styles.wrapOrderInfo}>
                     <Text style={styles.productName}>{product.productName}</Text>
                     <View style={styles.wrapSubInfo}>
@@ -78,6 +86,7 @@ export function RenderCartItem({item}) {
                 <QuantityButton 
                     iconName="minus"
                     _handleEvent={decreaseQuantity}
+                    UpdateProductQuantity={() => dispatch(UpdateProductQuantity(quantity, index))}
                 />
                 <View style={styles.quantity}>
                     <Text style={styles.valueStyle}>{quantity}</Text>
@@ -85,6 +94,8 @@ export function RenderCartItem({item}) {
                 <QuantityButton 
                     iconName="plus"
                     _handleEvent={increaseQuantity}
+                    UpdateProductQuantity={() => dispatch(UpdateProductQuantity(quantity, index))}
+
                 />
             </View>
         </View>

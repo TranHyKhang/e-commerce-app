@@ -49,7 +49,7 @@ export function CartScreen() {
             <Header/>
             <FlatList
                 data={carts}
-                renderItem={({item}) => <RenderCartItem item={item}/>}
+                renderItem={({item, index}) => <RenderCartItem item={item} index={index}/>}
             />
             <Button title='See cart' onPress={() => console.log(carts)}/>
             <Button title='Clear cart' onPress={() => clearCart()}/>

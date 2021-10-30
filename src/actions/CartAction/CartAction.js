@@ -54,6 +54,17 @@ export const AddToCart = (productID, productSize) => {
     }
 }
 
+export const UpdateProductQuantity = (quantity, index) => {
+    return (dispatch) => {
+        dispatch({type: Types.UPDATE_PRODUCT_QUANTITY_REQUEST})
+        try {
+            dispatch({type: Types.UPDATE_PRODUCT_QUANTITY_SUCCESS, payload: {quantity, index}})
+        } catch(err) {
+            console.log(err);
+        }
+    }
+}
+
 export const createOrder = (userID, order) => {
     return (dispatch) => {
         dispatch({type: Types.CREATE_ORDER_REQUEST});

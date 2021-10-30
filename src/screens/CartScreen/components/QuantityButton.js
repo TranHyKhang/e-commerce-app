@@ -8,11 +8,14 @@ import {
 
 import AntDesign from 'react-native-vector-icons/AntDesign'
 
-export function QuantityButton({iconName, _handleEvent}) {
+export function QuantityButton({iconName, _handleEvent, UpdateProductQuantity}) {
     return (
         <TouchableOpacity 
             activeOpacity={0.7}
-            onPress={() => _handleEvent()}
+            onPress={() => {
+                _handleEvent();
+                // UpdateProductQuantity();
+            }}
         >
             <View style={styles.container}>
                 <AntDesign name={iconName} size={20}/>
