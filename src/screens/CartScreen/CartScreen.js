@@ -21,6 +21,7 @@ import {GetCart} from '../../actions';
 
 //Component
 import {Header, RenderCartItem} from './components';
+import {CustomButton} from '../../components';
 
 export function CartScreen() {
 
@@ -30,6 +31,7 @@ export function CartScreen() {
 
     useEffect(() => {
         dispatch(GetCart());
+        console.log(carts)
     }, [])
 
     async function clearCart() {
@@ -51,12 +53,15 @@ export function CartScreen() {
             />
             <Button title='See cart' onPress={() => console.log(carts)}/>
             <Button title='Clear cart' onPress={() => clearCart()}/>
+            <CustomButton title='Order'/>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: Colors.white
+        backgroundColor: 'white',
+        display: 'flex',
+        flex: 1
     }
 })

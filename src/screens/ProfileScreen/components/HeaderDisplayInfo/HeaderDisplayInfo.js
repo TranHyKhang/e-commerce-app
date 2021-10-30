@@ -15,21 +15,24 @@ import {DEFAULT_IMAGE_URL} from '../../../../utils/config';
 import Antdesign from 'react-native-vector-icons/AntDesign'
 
 //redux
-import {useSelector} from 'react-redux';
-
+import {useSelector, useDispatch} from 'react-redux';
+import {HideTabBar} from '../../../../actions';
 
 export function HeaderDisplayInfo() {
 
     const user = useSelector(state => state.authReducer.user);
 
     const navigation = useNavigation();
-
+    const dispatch = useDispatch();
 
     return (
         <View style={styles.container}>
             <View style={styles.wrapHeaderFeature}>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('CartScreen')}
+                    onPress={() => {
+                        navigation.navigate('CartScreen');
+                        dispatch(HideTabBar());
+                    }}
                 > 
                     <Antdesign 
                         name="shoppingcart" 

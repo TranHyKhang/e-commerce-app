@@ -55,6 +55,9 @@ export function ProfileScreen() {
         <LoadingScreen/>
         :
 
+        // <View>
+        //     <Button onPress={() => StoreToken()} title='haha'/>
+        // </View>
         <View style={styles.container}>
             <HeaderDisplayInfo/>
             <BodyTab/>
