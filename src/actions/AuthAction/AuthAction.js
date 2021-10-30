@@ -20,3 +20,14 @@ export const GetUserInfo = () => {
         }
     }
 }
+
+export const StoreUserTempInfo = (userInfo) => {
+    return (dispatch) => {
+        dispatch({type: Types.STORE_USER_TEMP_REQUREST})
+        try {
+            dispatch({type: Types.STORE_USER_TEMP_SUCCESS, payload: userInfo})
+        } catch(err) {
+            console.log(err);
+        }
+    }
+}
