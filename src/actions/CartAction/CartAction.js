@@ -53,3 +53,20 @@ export const AddToCart = (productID, productSize) => {
         }
     }
 }
+
+export const createOrder = (userID, order) => {
+    return (dispatch) => {
+        dispatch({type: Types.CREATE_ORDER_REQUEST});
+        try {
+            let orderObj = {
+                userID: userID,
+                cartItem: order
+            }
+            dispatch({type: Types.CREATE_ORDER_SUCCESS, payload: orderObj});
+            
+        } catch(err) {
+            console.log(err)
+        }
+
+    }
+}
