@@ -12,7 +12,7 @@ import Colors from '../utils/Colors';
 export function CustomButton({title, _handleEvent}) {
     return (
         <TouchableOpacity
-            // onPress={() => _handleEvent()}
+            onPress={_handleEvent}
             activeOpacity={0.8}
         >
             <View style={styles.container}>

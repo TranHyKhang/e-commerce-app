@@ -1,13 +1,14 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { 
     View, 
     Text,
     StyleSheet,
     Button, 
-    FlatList
+    FlatList,
 } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 import Colors from '../../utils/Colors';
 
@@ -15,12 +16,20 @@ import Colors from '../../utils/Colors';
 import {LoadingScreen} from '../LoadingScreen';
 
 //redux
-import {useSelector, useDispatch} from 'react-redux';
+import {
+    useSelector, 
+    useDispatch
+} from 'react-redux';
 
 import {GetCart} from '../../actions';
 
 //Component
-import {Header, RenderCartItem} from './components';
+import {
+    Header, 
+    RenderCartItem,
+    UserInfoModal
+} from './components';
+
 import {CustomButton} from '../../components';
 
 export function CartScreen() {
@@ -28,6 +37,8 @@ export function CartScreen() {
     const dispatch = useDispatch();
     const isLoading = useSelector(state => state.cartReducer.isLoading);
     const carts = useSelector(state => state.cartReducer.carts);
+
+    const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
         dispatch(GetCart());
@@ -51,9 +62,13 @@ export function CartScreen() {
                 data={carts}
                 renderItem={({item, index}) => <RenderCartItem item={item} index={index}/>}
             />
-            <Button title='See cart' onPress={() => console.log(carts)}/>
-            <Button title='Clear cart' onPress={() => clearCart()}/>
-            <CustomButton title='Order'/>
+            {/* <Button title='See cart' onPress={() => console.log(carts)}/>
+            <Button title='Clear cart' onPress={() => clearCart()}/> */}
+            <Button title="haha" onPress={() => console.log(isVisible)}/>
+
+            <UserInfoModal isVisible={isVisible} setIsVisible={setIsVisible}/>
+            
+            <CustomButton title='Order' _handleEvent={() => setIsVisible(true)}/>
         </View>
     )
 }
