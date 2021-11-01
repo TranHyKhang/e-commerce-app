@@ -8,7 +8,6 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-import {TextInput} from 'react-native-paper'; 
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
