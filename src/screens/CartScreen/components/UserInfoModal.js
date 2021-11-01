@@ -25,7 +25,11 @@ export function UserInfoModal({isVisible, setIsVisible}) {
     const [address, setAddress] = useState('');
 
     return (
-        <Modal isVisible={isVisible} statusBarTranslucent>
+        <Modal 
+            isVisible={isVisible} 
+            statusBarTranslucent 
+            animationIn='slideInUp'
+        >
             <View style={styles.container}>
                 <View style={styles.wrapHeader}>
                     <Text style={styles.title}>User info</Text>

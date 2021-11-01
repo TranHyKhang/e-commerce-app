@@ -9,6 +9,7 @@ import {
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import {useNavigation} from '@react-navigation/native'
 
 import Colors from '../../utils/Colors';
 
@@ -37,6 +38,9 @@ export function CartScreen() {
     const dispatch = useDispatch();
     const isLoading = useSelector(state => state.cartReducer.isLoading);
     const carts = useSelector(state => state.cartReducer.carts);
+    const user = useSelector(state => state.authReducer.user);
+
+    const navigation = useNavigation();
 
     const [isVisible, setIsVisible] = useState(false);
 
@@ -47,6 +51,14 @@ export function CartScreen() {
 
     async function clearCart() {
         await AsyncStorage.removeItem('cart');
+    }
+
+    function verifyToNavigate(user) {
+        if(user !== null) {
+            navigation.navigate('OrderConfirmScreen');
+        } else {
+            setIsVisible(true)
+        }
     }
 
     return (
@@ -64,11 +76,11 @@ export function CartScreen() {
             />
             {/* <Button title='See cart' onPress={() => console.log(carts)}/>
             <Button title='Clear cart' onPress={() => clearCart()}/> */}
-            <Button title="haha" onPress={() => console.log(isVisible)}/>
+            <Button title="haha" onPress={() => console.log(user)}/>
 
             <UserInfoModal isVisible={isVisible} setIsVisible={setIsVisible}/>
             
-            <CustomButton title='Order' _handleEvent={() => setIsVisible(true)}/>
+            <CustomButton title='Order' _handleEvent={() => verifyToNavigate()}/>
         </View>
     )
 }
