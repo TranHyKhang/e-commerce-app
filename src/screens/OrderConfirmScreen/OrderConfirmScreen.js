@@ -1,10 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { 
     View, 
     Text,
     StyleSheet,
-    Button
+    Button,
 } from 'react-native';
+
+import {RadioButton} from 'react-native-paper';
 
 import Colors from '../../utils/Colors';
 
@@ -13,14 +15,19 @@ import {useSelector} from 'react-redux';
 import {
     RenderUserInfo,
     Header,
-    RenderCart
+    RenderCart,
+    RenderPaymentMethodItem
 } from './components';
-import { cartReducer } from '../../reducers/cart/cartReducer';
+
+import {CustomButton} from '../../components'
 
 export function OrderConfirmScreen() {
 
     const products = useSelector(state => state.productReducer.products);
     const carts = useSelector(state => state.cartReducer.carts)
+
+    //Radio button state
+    const [checked, setChecked] = useState('Paypal')
 
     function TotalMoney() {
         let total = 0;
@@ -37,10 +44,50 @@ export function OrderConfirmScreen() {
 
     return (
         <View style={styles.container}>
-            <Header/>
-            <RenderUserInfo/>
-            <RenderCart/>
-            <Button title="haha" onPress={() => console.log(TotalMoney())}/>
+            <View>
+                <Header/>
+                <RenderUserInfo/>
+                <RenderCart/>
+
+                <View style={{
+                    padding: 10
+                }}>
+                    <Text
+                        style={{
+                            fontWeight: '800',
+                            fontSize: 16
+                        }}
+                    >
+                        Payment method: 
+                    </Text>
+                    <RenderPaymentMethodItem
+                        checked={checked}
+                        value='Paypal'
+                        _handleRadioButtonOnPress={() => setChecked('Paypal')}
+                        label='Paypal'
+                        iconName='cc-paypal'
+                    />
+                    <RenderPaymentMethodItem
+                        checked={checked}
+                        value='COD'
+                        _handleRadioButtonOnPress={() => setChecked('COD')}
+                        label='COD'
+                        iconName='money'
+                    />
+                </View>
+
+            </View>
+            
+            <View style={styles.wrapButton}>
+                <View style={styles.wrapTotalMoney}>
+                    <Text style={styles.label}>Total: </Text>
+                    <Text style={styles.value}>{TotalMoney()}</Text>
+                    <Text style={styles.value}>$</Text>
+                </View>
+
+                <CustomButton title="Next"/>
+
+            </View>
         </View>
     )
 }
@@ -49,5 +96,22 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
+        justifyContent: 'space-between'
+    },
+    wrapButton: {
+    
+    },
+    wrapTotalMoney: {
+        display: 'flex',
+        flexDirection: 'row',
+        paddingLeft: 15
+    },
+    label: {
+        fontSize: 18,
+        fontWeight: '800'
+    },
+    value: {
+        fontSize: 18,
+        fontWeight: '800'
     }
 })

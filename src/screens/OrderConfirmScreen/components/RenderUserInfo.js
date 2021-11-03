@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 
 import {useSelector} from 'react-redux';
+
 import Colors from '../../../utils/Colors';
 
 export function RenderUserInfo() {
@@ -42,7 +43,8 @@ export function RenderUserInfo() {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: Colors.pink_fire,
-        padding: 10
+        padding: 10,
+        paddingBottom: 20
     },
     wrapContent: {
         display: 'flex',
