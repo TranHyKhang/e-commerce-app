@@ -76,7 +76,6 @@ export function CartScreen() {
             />
             {/* <Button title='See cart' onPress={() => console.log(carts)}/>
             <Button title='Clear cart' onPress={() => clearCart()}/> */}
-            <Button title="haha" onPress={() => console.log(user)}/>
 
             <UserInfoModal isVisible={isVisible} setIsVisible={setIsVisible}/>
             
