@@ -9,10 +9,15 @@ import {
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Colors from '../../../utils/Colors';
 
+import {useNavigation} from '@react-navigation/native';
+
 export function Header() {
+
+    const navigation = useNavigation();
+
     return (
         <View style={styles.container}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
                 <AntDesign name='close' size={25} style={{paddingTop: 10, color: Colors.white}}/>
             </TouchableOpacity>
         </View>
