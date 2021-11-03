@@ -36,6 +36,8 @@ export function ProfileScreen() {
         }
     }
 
+    
+
     async function GetToken() {
         try {
             let token = await AsyncStorage.getItem('authToken');
@@ -52,12 +54,11 @@ export function ProfileScreen() {
     
     return (
         isLoading ?
+
         <LoadingScreen/>
+        
         :
 
-        // <View>
-        //     <Button onPress={() => StoreToken()} title='haha'/>
-        // </View>
         <View style={styles.container}>
             <HeaderDisplayInfo/>
             <BodyTab/>

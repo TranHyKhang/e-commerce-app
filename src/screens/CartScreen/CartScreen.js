@@ -53,7 +53,7 @@ export function CartScreen() {
         await AsyncStorage.removeItem('cart');
     }
 
-    function verifyToNavigate(user) {
+    function verifyToNavigate() {
         if(user !== null) {
             navigation.navigate('OrderConfirmScreen');
         } else {
@@ -76,6 +76,8 @@ export function CartScreen() {
             />
             {/* <Button title='See cart' onPress={() => console.log(carts)}/>
             <Button title='Clear cart' onPress={() => clearCart()}/> */}
+
+            {/* <Button title="haha" onPress={() => console.log(user !== null)}/> */}
 
             <UserInfoModal isVisible={isVisible} setIsVisible={setIsVisible}/>
             

@@ -8,13 +8,19 @@ export const GetUserInfo = () => {
         dispatch({type: Types.GET_USER_INFO_REQUEST});
         try {
             let token = await AsyncStorage.getItem('authToken');
-            let data = await axios.get(API_URL + '/user', {
-                headers: {
-                    authorization: 'Bearer ' + token
-                }
-            });
-
-            dispatch({type: Types.GET_USER_INFO_SUCCESS, payload: data.data});
+            if(token !== null) {
+                let data = await axios.get(API_URL + '/user', {
+                    headers: {
+                        authorization: 'Bearer ' + token
+                    }
+                });
+    
+                dispatch({type: Types.GET_USER_INFO_SUCCESS, payload: data.data});
+            } else {
+                dispatch({type: Types.GET_USER_INFO_SUCCESS, payload: null});
+                
+            }
+            
         } catch(err) {
             console.log(err);
         }
