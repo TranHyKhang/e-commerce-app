@@ -6,3 +6,5 @@ export * from './ProductDetailScreen';
 export * from './OrderScreen';
 export * from './CartScreen';
 export * from './OrderConfirmScreen';
+export * from './LoginScreen';
+export * from './SignUpScreen';
