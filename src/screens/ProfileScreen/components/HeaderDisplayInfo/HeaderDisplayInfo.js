@@ -119,7 +119,12 @@ export function HeaderDisplayInfo() {
                                 </View>
                                 :
                                 <View style={styles.wrapUserInfo}>
-                                    <TouchableOpacity>
+                                    <TouchableOpacity
+                                        onPress={() => {
+                                            navigation.navigate('LoginScreen');
+                                            // dispatch(HideTabBar());
+                                        }}
+                                    >
                                         <Text 
                                             style={[styles.userName, {color: Colors.tab_button_focused_blue}]}
                                         >
