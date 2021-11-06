@@ -122,7 +122,7 @@ export function HeaderDisplayInfo() {
                                     <TouchableOpacity
                                         onPress={() => {
                                             navigation.navigate('LoginScreen');
-                                            // dispatch(HideTabBar());
+                                            dispatch(HideTabBar());
                                         }}
                                     >
                                         <Text 
