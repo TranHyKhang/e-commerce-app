@@ -21,6 +21,9 @@ import {useNavigation} from '@react-navigation/native';
 import {CustomInput, CustomButton} from '../../components'
 import {Header} from './components'
 
+//redux
+import {useDispatch} from 'react-redux';
+import {postLogin} from '../../actions';
 
 
 const {width, height} = Dimensions.get('screen');
@@ -28,23 +31,25 @@ const {width, height} = Dimensions.get('screen');
 export function LoginScreen() {
 
     const navigation = useNavigation();
+    const dispatch = useDispatch();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    async function postLogin() {
-        try {
-            let token = await axios.post(API_URL + '/auth/login', {userEmail: email, userPassword: password});
-            try {
-                await AsyncStorage.setItem('authToken', token.data);
-            } catch(err) {
-                console.log(err)
-            }
-        } catch(err) {
-            //login fail
-            console.log('haha');
-        }
-    }
+    // async function postLogin() {
+    //     try {
+    //         let token = await axios.post(API_URL + '/auth/login', {userEmail: email, userPassword: password});
+    //         try {
+    //             await AsyncStorage.setItem('authToken', token.data);
+    //             navigation.navigate('ProfileScreen')
+    //         } catch(err) {
+    //             console.log(err)
+    //         }
+    //     } catch(err) {
+    //         //login fail
+    //         console.log('haha');
+    //     }
+    // }
 
     return (
         <View style={styles.container}>
@@ -70,7 +75,10 @@ export function LoginScreen() {
                     margin: 10
                 }}>
                     {/* Push login in here */}
-                    <CustomButton title='Login' _handleEvent={() => postLogin()}/>
+                    <CustomButton title='Login' _handleEvent={() => {
+                        dispatch(postLogin(email, password, navigation));
+                        navigation.navigate('ProfileScreen')
+                    }}/>
                 </View>
 
                 <View style={styles.wrapSignUpOption}>

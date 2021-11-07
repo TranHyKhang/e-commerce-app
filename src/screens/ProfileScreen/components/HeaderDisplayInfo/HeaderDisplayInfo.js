@@ -24,7 +24,10 @@ import {RenderSettingItem} from './components';
 
 //redux
 import {useSelector, useDispatch} from 'react-redux';
-import {HideTabBar} from '../../../../actions';
+import {
+    HideTabBar,
+    LogOut
+} from '../../../../actions';
 
 const {width} = Dimensions.get('screen');
 
@@ -39,14 +42,6 @@ export function HeaderDisplayInfo() {
     const scrollX = new Animated.Value(0);
     const scrollClick = useRef(null);
 
-    //Clear token
-    async function ClearToken() {
-        try {
-            await AsyncStorage.removeItem('authToken')
-        } catch(err) {
-            console.log(err);
-        }
-    }
 
     return (
         <Animated.View>
@@ -94,16 +89,28 @@ export function HeaderDisplayInfo() {
                         </View>
                         <View style={styles.wrapUserDisplay}>
                             <View style={styles.userImage}>
-                                <Image 
+                                {
+                                    user !== null ?
+                                    <Image 
                                     source={{
-                                        uri: user !== null ? user.userImageUrl : DEFAULT_IMAGE_URL
+                                        uri: user.userImageUrl !== null ? user.userImageUrl : DEFAULT_IMAGE_URL
                                     }}
                                     style={{
                                         width: '100%',
                                         height: '100%',
                                         borderRadius: 100
+                                    }}/>
+                                    :
+                                    <Image 
+                                    source={{
+                                        uri: DEFAULT_IMAGE_URL
                                     }}
-                                />
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        borderRadius: 100
+                                    }}/>
+                                }
                             </View>
                             {
                                 user !== null 
@@ -155,7 +162,7 @@ export function HeaderDisplayInfo() {
                             <RenderSettingItem 
                                 lable='Log out'
                                 iconName='log-out'
-                                _handleTouchEvent={() => ClearToken()}
+                                _handleTouchEvent={() => dispatch(LogOut())}
                             />
                         </View>
                         

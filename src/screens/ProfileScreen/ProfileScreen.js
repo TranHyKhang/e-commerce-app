@@ -27,17 +27,8 @@ export function ProfileScreen() {
     const isLoading = useSelector(state => state.authReducer.isLoading);
     const dispatch = useDispatch();
     const [token, setToken] = useState('');
-    async function StoreToken() {
-        try {
-            await AsyncStorage.setItem('authToken', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2MTZkODBmOWU0MzcyOGU0NDg1ZTY1OWEiLCJpYXQiOjE2MzQ2NTQ0NDd9.sy91zbq5p6UHcbsoMbFCsof8tPmYaRUtamfN_95lTFI');
-        }
-        catch(err) {
-            console.log(err);
-        }
-    }
 
     
-
     async function GetToken() {
         try {
             let token = await AsyncStorage.getItem('authToken');
