@@ -3,6 +3,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios'
 import {API_URL} from '../../utils/config'
 
+
+//get user
 export const GetUserInfo = () => {
     return async(dispatch) => {
         dispatch({type: Types.GET_USER_INFO_REQUEST});
@@ -27,6 +29,7 @@ export const GetUserInfo = () => {
     }
 }
 
+//Login
 export const postLogin = (email, password, navigation) => {
     return async(dispatch) => {
         dispatch({type: Types.LOG_OUT_REQUEST});
@@ -54,6 +57,7 @@ export const postLogin = (email, password, navigation) => {
     }
 }
 
+//Logout
 export const LogOut = () => {
     return async(dispatch) => {
         dispatch({type: Types.LOGIN_REQUEST});
@@ -66,11 +70,38 @@ export const LogOut = () => {
     }
 }
 
+//store user if user don't want to register
 export const StoreUserTempInfo = (userInfo) => {
     return (dispatch) => {
         dispatch({type: Types.STORE_USER_TEMP_REQUREST})
         try {
             dispatch({type: Types.STORE_USER_TEMP_SUCCESS, payload: userInfo})
+        } catch(err) {
+            console.log(err);
+        }
+    }
+}
+
+//Create new user account
+export const SignUp = (user) => {
+    return async(dispatch) => {
+        dispatch({type: Types.SIGN_UP_REQUEST})
+        if(user.password !== user.confirmPassword) {
+            dispatch({type: Types.SIGN_UP_FAILED, payload: 'Password and confirm password not match!'});
+            return;
+        }
+        try {
+            console.log('o day')
+
+            let res = await axios.post(API_URL + '/auth/register', {
+                userName: user.userName,
+                userEmail: user.email,
+                userPassword: user.password,
+                userPhoneNumber: user.userPhone,
+                userAddress: user.userAddress
+            });
+            console.log(res)
+            dispatch({type: Types.SIGN_UP_SUCCESS})
         } catch(err) {
             console.log(err);
         }
