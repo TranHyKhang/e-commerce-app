@@ -5,7 +5,8 @@ import {
     StyleSheet,
     Dimensions,
     TouchableOpacity,
-    ScrollView
+    ScrollView,
+    Button
 } from 'react-native';
 
 import Colors from '../../utils/Colors';
@@ -14,13 +15,20 @@ import {useNavigation} from '@react-navigation/native';
 
 //Components
 import {CustomInput, CustomButton} from '../../components'
-import {Header} from './components'
+import {Header, ModelNotification} from './components'
+
+//Redux
+import {useDispatch, useSelector} from 'react-redux';
+import {SignUp} from '../../actions'
 
 const {width, height} = Dimensions.get('screen');
 
 export function SignUpScreen() {
 
     const navigation = useNavigation();
+    const dispatch = useDispatch();
+
+    const error = useSelector(state => state.authReducer.error);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -82,8 +90,9 @@ export function SignUpScreen() {
                         width: width/1.13,
                         margin: 10
                     }}>
-                        {/* Push login in here */}
-                        <CustomButton title='Sign Up' _handleEvent={() => console.log(email, password)}/>
+                        {/* Push Sign up in here */}
+                        <CustomButton title='Sign Up' _handleEvent={() => dispatch(SignUp({email, password, confirmPassword, userName, userAddress, userPhone}))}/>
+                        <Button title='haha' onPress={() => console.log(error)}/>
                     </View>
 
                     <View style={styles.wrapSignUpOption}>
@@ -97,6 +106,7 @@ export function SignUpScreen() {
                     </View>
                 </View>
                 
+                <ModelNotification notification='Successfully'/>
             </View>
         </ScrollView>
        

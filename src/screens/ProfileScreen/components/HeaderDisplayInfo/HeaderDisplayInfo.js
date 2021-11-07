@@ -89,28 +89,15 @@ export function HeaderDisplayInfo() {
                         </View>
                         <View style={styles.wrapUserDisplay}>
                             <View style={styles.userImage}>
-                                {
-                                    user !== null ?
-                                    <Image 
-                                    source={{
-                                        uri: user.userImageUrl !== null ? user.userImageUrl : DEFAULT_IMAGE_URL
-                                    }}
-                                    style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        borderRadius: 100
-                                    }}/>
-                                    :
-                                    <Image 
-                                    source={{
-                                        uri: DEFAULT_IMAGE_URL
-                                    }}
-                                    style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        borderRadius: 100
-                                    }}/>
-                                }
+                                <Image 
+                                source={{
+                                    uri: user !== null ? user.userImageUrl : DEFAULT_IMAGE_URL
+                                }}
+                                style={{
+                                    width: '100%',
+                                    height: '100%',
+                                    borderRadius: 100
+                                }}/>
                             </View>
                             {
                                 user !== null 
