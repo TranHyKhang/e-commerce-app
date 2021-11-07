@@ -133,7 +133,7 @@ export function HeaderDisplayInfo() {
                                         }}
                                     >
                                         <Text 
-                                            style={[styles.userName, {color: Colors.tab_button_focused_blue}]}
+                                            style={[styles.userName, {color: Colors.pink_fire}]}
                                         >
                                                 Sign in / Sign up
                                         </Text>
