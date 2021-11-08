@@ -13,6 +13,8 @@ import Colors from '../../utils/Colors';
 
 import {useNavigation} from '@react-navigation/native';
 
+import {LoadingTransparentScreen} from '../LoadingTransparentScreen';
+
 //Components
 import {CustomInput, CustomButton} from '../../components'
 import {Header, ModelNotification} from './components'
@@ -29,6 +31,7 @@ export function SignUpScreen() {
     const dispatch = useDispatch();
 
     const error = useSelector(state => state.authReducer.error);
+    const isLoading = useSelector(state => state.authReducer.isLoading);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -36,6 +39,8 @@ export function SignUpScreen() {
     const [userName, setUserName] = useState('');
     const [userPhone, setUserPhone] = useState('');
     const [userAddress, setUserAddress] = useState('');
+
+    const [isVisible, setIsVisible] = useState(false);
 
 
     return (
@@ -91,8 +96,13 @@ export function SignUpScreen() {
                         margin: 10
                     }}>
                         {/* Push Sign up in here */}
-                        <CustomButton title='Sign Up' _handleEvent={() => dispatch(SignUp({email, password, confirmPassword, userName, userAddress, userPhone}))}/>
-                        <Button title='haha' onPress={() => console.log(error)}/>
+                        <CustomButton 
+                            title='Sign Up' 
+                            _handleEvent={() => {
+                                dispatch(SignUp({email, password, confirmPassword, userName, userAddress, userPhone}));
+                                setIsVisible(true)
+                            }}
+                        />
                     </View>
 
                     <View style={styles.wrapSignUpOption}>
@@ -106,10 +116,15 @@ export function SignUpScreen() {
                     </View>
                 </View>
                 
-                <ModelNotification notification='Successfully'/>
+                {
+                    isLoading ?
+                    <LoadingTransparentScreen/>
+                    :
+                    <ModelNotification notification={error} isVisible={isVisible} setIsVisible={setIsVisible}/>
+
+                }
             </View>
         </ScrollView>
-       
     )
 }
 

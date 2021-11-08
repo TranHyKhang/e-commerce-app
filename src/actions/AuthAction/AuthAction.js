@@ -101,7 +101,11 @@ export const SignUp = (user) => {
                 userAddress: user.userAddress
             });
             console.log(res)
-            dispatch({type: Types.SIGN_UP_SUCCESS})
+            if(res.data === 'Successfully') {
+                dispatch({type: Types.SIGN_UP_SUCCESS})
+            } else {
+                dispatch({type: Types.SIGN_UP_FAILED, payload: res.data})
+            }
         } catch(err) {
             console.log(err);
         }
