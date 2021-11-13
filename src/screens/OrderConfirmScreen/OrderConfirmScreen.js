@@ -16,7 +16,8 @@ import {
     RenderUserInfo,
     Header,
     RenderCart,
-    RenderPaymentMethodItem
+    RenderPaymentMethodItem,
+    RenderPaypalView
 } from './components';
 
 import {CustomButton} from '../../components'
@@ -29,6 +30,10 @@ export function OrderConfirmScreen() {
     //Radio button state
     const [checked, setChecked] = useState('Paypal')
 
+    //Paypal state
+    const [paymentStatus, setPaymentStatus] = useState('');
+    const [modalIsVisible, setModalIsVisible] = useState(false);
+
     function TotalMoney() {
         let total = 0;
         for(let i = 0; i < carts.length; i++) {
@@ -40,6 +45,12 @@ export function OrderConfirmScreen() {
         }
 
         return total;
+    }
+
+    function handleSelectOption() {
+        if(checked === 'Paypal') {
+            setModalIsVisible(true);
+        }
     }
 
     return (
@@ -77,6 +88,8 @@ export function OrderConfirmScreen() {
                 </View>
 
             </View>
+
+           
             
             <View style={styles.wrapButton}>
                 <View style={styles.wrapTotalMoney}>
@@ -85,9 +98,17 @@ export function OrderConfirmScreen() {
                     <Text style={styles.value}>$</Text>
                 </View>
 
-                <CustomButton title="Next"/>
+                <CustomButton title="Next" _handleEvent={() => handleSelectOption()}/>
 
             </View>
+
+            <RenderPaypalView 
+                paymentStatus={paymentStatus} 
+                setPaymentStatus={setPaymentStatus}
+                modalIsVisible={modalIsVisible}
+                setModalIsVisible={setModalIsVisible}
+                paymentMethod={checked}
+            />
         </View>
     )
 }

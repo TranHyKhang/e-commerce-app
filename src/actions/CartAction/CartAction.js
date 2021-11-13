@@ -1,6 +1,9 @@
 import {Types} from '../actionTypes';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import Axios from 'axios';
+import {API_URL} from '../../utils/config'
+
 export const GetCart = () => {
     return async(dispatch) => {
         dispatch({type: Types.GET_CART_REQUEST})
@@ -65,15 +68,17 @@ export const UpdateProductQuantity = (quantity, index) => {
     }
 }
 
-export const createOrder = (userID, order) => {
-    return (dispatch) => {
+export const createOrder = ({userID, order, paymentMethod, paymentStatus}) => {
+    return async (dispatch) => {
         dispatch({type: Types.CREATE_ORDER_REQUEST});
         try {
-            let orderObj = {
+            await Axios.post(API_URL + '/api/order', {
                 userID: userID,
-                cartItem: order
-            }
-            dispatch({type: Types.CREATE_ORDER_SUCCESS, payload: orderObj});
+                cartItem: order,
+                paymentMehtod: paymentMethod,
+                paymentStatus: paymentStatus
+            })
+            dispatch({type: Types.CREATE_ORDER_SUCCESS});
             
         } catch(err) {
             console.log(err)

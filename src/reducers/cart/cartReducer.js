@@ -56,7 +56,6 @@ export const cartReducer = (state = initialState, action) => {
         case Types.CREATE_ORDER_SUCCESS:
             return {
                 ...state,
-                order: action.payload,
                 isLoading: false
             }
         default: 
