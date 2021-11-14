@@ -75,7 +75,7 @@ export const createOrder = ({userID, order, paymentMethod, paymentStatus}) => {
             await Axios.post(API_URL + '/api/order', {
                 userID: userID,
                 cartItem: order,
-                paymentMehtod: paymentMethod,
+                paymentMethod: paymentMethod,
                 paymentStatus: paymentStatus
             })
             dispatch({type: Types.CREATE_ORDER_SUCCESS});
@@ -84,5 +84,25 @@ export const createOrder = ({userID, order, paymentMethod, paymentStatus}) => {
             console.log(err)
         }
 
+    }
+}
+
+export const openModalOrderSuccess = () => {
+    return (dispatch) => {
+        try {
+            dispatch({type: Types.MODAL_SUCCESS_VISIBLE});
+        } catch(err) {
+            console.log(err);
+        }
+    }
+}
+
+export const closeModalOrderSuccess = () => {
+    return (dispatch) => {
+        try {
+            dispatch({type: Types.MODAL_SUCCESS_INVISIBLE});
+        } catch(err) {
+            console.log(err);
+        }
     }
 }

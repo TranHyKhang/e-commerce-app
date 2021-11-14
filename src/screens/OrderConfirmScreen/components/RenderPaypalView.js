@@ -16,7 +16,7 @@ import {WebView} from 'react-native-webview';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import {useSelector, useDispatch} from 'react-redux'; 
-import {createOrder} from '../../../actions';
+import {createOrder, openModalOrderSuccess} from '../../../actions';
 
 import Colors from '../../../utils/Colors'
 
@@ -34,8 +34,12 @@ export function RenderPaypalView({paymentStatus,setPaymentStatus, modalIsVisible
 
         if(data.title === 'Success') {
             setPaymentStatus("Complete")
-            dispatch(createOrder({userID: user._id, order: carts, paymentMethod, paymentStatus: 1 }))
+            dispatch(createOrder({userID: user._id, order: carts, paymentMethod: paymentMethod, paymentStatus: 1 }))
             setModalIsVisible(false);
+            navigation.navigate('ProfileScreen');
+            dispatch(openModalOrderSuccess());
+            
+            //clear cart after success
         } else if(data.title === 'cancel') {
             setPaymentStatus('Cancelled');
             setModalIsVisible(false)

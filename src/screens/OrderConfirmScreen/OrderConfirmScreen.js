@@ -6,11 +6,13 @@ import {
     Button,
 } from 'react-native';
 
-import {RadioButton} from 'react-native-paper';
 
 import Colors from '../../utils/Colors';
 
-import {useSelector} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
+
+import {useSelector, useDispatch} from 'react-redux';
+import {createOrder, openModalOrderSuccess} from '../../actions';
 
 import {
     RenderUserInfo,
@@ -24,8 +26,12 @@ import {CustomButton} from '../../components'
 
 export function OrderConfirmScreen() {
 
+    const dispatch = useDispatch();
+    const navigation = useNavigation();
+
     const products = useSelector(state => state.productReducer.products);
     const carts = useSelector(state => state.cartReducer.carts)
+    const user = useSelector(state => state.authReducer.user);
 
     //Radio button state
     const [checked, setChecked] = useState('Paypal')
@@ -50,6 +56,12 @@ export function OrderConfirmScreen() {
     function handleSelectOption() {
         if(checked === 'Paypal') {
             setModalIsVisible(true);
+        } else if(checked === 'COD') {
+            dispatch(createOrder({userID: user._id, paymentMethod: checked, paymentStatus: 0, order: carts}));
+            navigation.navigate('ProfileScreen')
+            dispatch(openModalOrderSuccess());
+
+            //Clean cart after order
         }
     }
 

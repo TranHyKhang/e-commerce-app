@@ -4,6 +4,7 @@ const initialState = {
     carts: [],
     order:{},
     isLoading: true,
+    modalOrderSuccessVisible: false
 }
 
 //If userid null -> type info user else binding user info
@@ -58,6 +59,19 @@ export const cartReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false
             }
+        
+        case Types.MODAL_SUCCESS_VISIBLE: {
+            return {
+                ...state,
+                modalOrderSuccessVisible: true
+            }
+        }
+        case Types.MODAL_SUCCESS_INVISIBLE: {
+            return {
+                ...state,
+                modalOrderSuccessVisible: false
+            }
+        }
         default: 
             return state;
         

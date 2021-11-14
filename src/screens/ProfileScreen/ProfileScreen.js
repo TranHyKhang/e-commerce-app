@@ -13,7 +13,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {LoadingScreen} from '../LoadingScreen'
 
 //Component
-import {HeaderDisplayInfo, BodyTab} from './components';
+import {HeaderDisplayInfo, BodyTab, ModalOrderSuccess} from './components';
 
 //Actions
 import {GetUserInfo} from '../../actions'
@@ -53,6 +53,7 @@ export function ProfileScreen() {
         <View style={styles.container}>
             <HeaderDisplayInfo/>
             <BodyTab/>
+            <ModalOrderSuccess/>
         </View>
     )
 }
