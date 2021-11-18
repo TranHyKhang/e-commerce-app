@@ -13,7 +13,13 @@ import {useSelector, useDispatch} from 'react-redux';
 import {LoadingScreen} from '../LoadingScreen'
 
 //Component
-import {HeaderDisplayInfo, BodyTab, ModalOrderSuccess} from './components';
+import {
+    HeaderDisplayInfo, 
+    BodyTab, 
+    ModalOrderSuccess,
+    RenderBodyFavorites,
+    RenderBodyTrackingOrder
+} from './components';
 
 //Actions
 import {GetUserInfo} from '../../actions'
@@ -25,19 +31,9 @@ export function ProfileScreen() {
 
     const user = useSelector(state => state.authReducer.user);
     const isLoading = useSelector(state => state.authReducer.isLoading);
+    const isTabLeft = useSelector(state => state.bodyTabReducer.isTabLeft);
     const dispatch = useDispatch();
-    const [token, setToken] = useState('');
-
     
-    async function GetToken() {
-        try {
-            let token = await AsyncStorage.getItem('authToken');
-            setToken(token);
-        }catch(err) {
-            console.log(err);
-        }
-    }
-
     useEffect(() => {
         dispatch(GetUserInfo());
         console.log('useEffect run')
@@ -54,6 +50,13 @@ export function ProfileScreen() {
             <HeaderDisplayInfo/>
             <BodyTab/>
             <ModalOrderSuccess/>
+
+            {
+                isTabLeft ?
+                <RenderBodyFavorites/>
+                :
+                <RenderBodyTrackingOrder/>
+            }
         </View>
     )
 }

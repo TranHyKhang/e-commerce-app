@@ -14,7 +14,8 @@ import {
 
 import {
     TabToFavorite, 
-    TabToTrackingOrder
+    TabToTrackingOrder,
+    getUserOrders
 } from '../../../../actions';
 
 import Colors from '../../../../utils/Colors'
@@ -24,6 +25,7 @@ const {width} = Dimensions.get('screen');
 export function BodyTab() {
     
     const isTabLeft = useSelector(state => state.bodyTabReducer.isTabLeft);
+    const user = useSelector(state => state.authReducer.user);
     const dispatch = useDispatch();
 
 
@@ -52,7 +54,11 @@ export function BodyTab() {
                 </View>
             </TouchableOpacity>
             <TouchableOpacity 
-                onPress={() => dispatch(TabToTrackingOrder())}
+                onPress={() => {
+                    dispatch(TabToTrackingOrder());
+                    dispatch(getUserOrders(user._id));
+                    // console.log(user)
+                }}
                 activeOpacity={1}
             >
                 <View style={[
