@@ -7,7 +7,8 @@ import {
     tabNavigatorReducer,
     authReducer,
     bodyTabReducer,
-    cartReducer
+    cartReducer, 
+    orderReducer
 } from '../reducers'
 
 const rootReducer = combineReducers({
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
     tabNavigatorReducer,
     authReducer,
     bodyTabReducer,
-    cartReducer
+    cartReducer,
+    orderReducer
 });
 
 export default store = createStore(rootReducer, applyMiddleware(thunk));
