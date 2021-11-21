@@ -56,7 +56,7 @@ export function BodyTab() {
             <TouchableOpacity 
                 onPress={() => {
                     dispatch(TabToTrackingOrder());
-                    dispatch(getUserOrders(user._id));
+                    dispatch(getUserOrders(user));
                     // console.log(user)
                 }}
                 activeOpacity={1}

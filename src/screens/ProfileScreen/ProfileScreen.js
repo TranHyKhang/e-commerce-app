@@ -3,7 +3,8 @@ import {
     View, 
     Text,
     StyleSheet,
-    Button
+    Button,
+    ScrollView
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -46,7 +47,7 @@ export function ProfileScreen() {
         
         :
 
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <HeaderDisplayInfo/>
             <BodyTab/>
             <ModalOrderSuccess/>
@@ -57,7 +58,7 @@ export function ProfileScreen() {
                 :
                 <RenderBodyTrackingOrder/>
             }
-        </View>
+        </ScrollView>
     )
 }
 

@@ -3,12 +3,15 @@ import {
     View, 
     Text,
     StyleSheet,
-    TouchableOpacity
+    TouchableOpacity,
+    Button
 } from 'react-native';
 
 import Colors from '../../../../../utils/Colors';
 
-import Entypo from 'react-native-vector-icons/Entypo'
+import Entypo from 'react-native-vector-icons/Entypo';
+
+import {RenderDetailOrder} from './RenderDetailOrder';
 
 export function RenderOrderItem({item}) {
     
@@ -24,7 +27,8 @@ export function RenderOrderItem({item}) {
                     style={[
                         styles.wrapText,
                         {
-                            justifyContent: 'space-between'
+                            justifyContent: 'space-between',
+                            padding: 10
                         }
                     ]}
                 >
@@ -40,7 +44,13 @@ export function RenderOrderItem({item}) {
                     </View>
                     
                     <View>
-                        <Entypo name='chevron-right' size={30} color={Colors.tab_button_focused_blue}/>
+                        {
+                            isClick ?
+                            <Entypo name='chevron-down' size={30} color={Colors.tab_button_focused_blue}/>
+                            :
+                            <Entypo name='chevron-right' size={30} color={Colors.tab_button_focused_blue}/>
+                            
+                        }
                     </View>
                 </View>
 
@@ -49,7 +59,7 @@ export function RenderOrderItem({item}) {
                         display: isClick ? 'flex' : 'none'
                     }}
                 >
-                    <Text>haha</Text>
+                    <RenderDetailOrder item={item}/>
                 </View>
             </View>
         </TouchableOpacity>
@@ -59,11 +69,12 @@ export function RenderOrderItem({item}) {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 10,
+        borderBottomWidth: 1,
+        borderColor: Colors.tab_button_focused_blue
     },
     wrapText: {
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     valueStyle: {
         color: Colors.tab_button_focused_blue,

@@ -5,6 +5,7 @@ import {
     StyleSheet,
     Button, 
     FlatList,
+    Image
 } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -30,6 +31,8 @@ import {
     RenderCartItem,
     UserInfoModal
 } from './components';
+
+import EmptyCart from '../../utils/Images/empty-cart.png'
 
 import {CustomButton} from '../../components';
 
@@ -70,10 +73,23 @@ export function CartScreen() {
 
         <View style={styles.container}>
             <Header/>
-            <FlatList
-                data={carts}
-                renderItem={({item, index}) => <RenderCartItem item={item} index={index}/>}
-            />
+
+            {
+                carts === null ?
+                <View style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
+                    <Image source={EmptyCart}/>
+                </View>
+                :
+                <FlatList
+                    data={carts}
+                    renderItem={({item, index}) => <RenderCartItem item={item} index={index}/>}
+                />
+            }
+            
             {/* <Button title='See cart' onPress={() => console.log(carts)}/>
             <Button title='Clear cart' onPress={() => clearCart()}/> */}
 

@@ -1,7 +1,7 @@
 import {Types} from '../../actions';
 
 const initialState = {
-    carts: [],
+    carts: null,
     order:{},
     isLoading: true,
     modalOrderSuccessVisible: false

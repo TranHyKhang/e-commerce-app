@@ -11,13 +11,20 @@ import {RenderOrderItem} from './components';
 
 export  function RenderBodyTrackingOrder() {
     const orders = useSelector(state => state.orderReducer.orders);
+    const user = useSelector(state => state.authReducer.user)
 
     return (
         <View>
-            <FlatList
-                data={orders}
-                renderItem={({item}) => <RenderOrderItem item={item}/>}
-            />
+            {
+                orders === null ?
+                <Text>No login</Text>
+                :
+                <FlatList
+                    data={orders}
+                    renderItem={({item}) => <RenderOrderItem item={item}/>}
+                />
+            }
+            
         </View>
     )
 }
