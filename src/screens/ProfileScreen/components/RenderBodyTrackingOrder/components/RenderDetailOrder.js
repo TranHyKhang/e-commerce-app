@@ -71,6 +71,27 @@ export function RenderDetailOrder({item}) {
                     styles.wrapLabelValue, 
                     {
                         justifyContent: 'space-between',
+                        paddingLeft: 10
+                    }
+                ]}
+            >
+                {/* <Button title="haha" onPress={() => console.log(item)}/> */}
+                <Text style={{fontWeight: '700', fontSize: 18}}>Payment status:</Text>
+                <Text style={{fontWeight: '700', fontSize: 18}}>
+                    {
+                        item.paymentStatus === 1 ?
+                        'Completed'
+                        :
+                        'Incompleted'
+                    }
+                </Text>
+            </View>
+
+            <View 
+                style={[
+                    styles.wrapLabelValue, 
+                    {
+                        justifyContent: 'space-between',
                         padding: 10
                     }
                 ]}

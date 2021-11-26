@@ -106,3 +106,14 @@ export const closeModalOrderSuccess = () => {
         }
     }
 }
+
+export const removeItemInCart = (productID) => {
+    return async(dispatch) => {
+        dispatch({type: Types.REMOVE_CART_ITEM_REQUEST})
+        try {
+            dispatch({type:Types.REMOVE_CART_ITEM_SUCCESS, payload: productID})
+        } catch(err) {
+            console.log(err);
+        }
+    }
+}

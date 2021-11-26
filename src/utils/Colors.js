@@ -3,7 +3,7 @@ export default {
     white: '#fff',
     black: '#000',
     tab_button_focused_blue: '#0cc3c5',
-    pink_fire: '#e32577',
+    pink_fire: '#F30485',
     title_color: '#333333',
     sub_title_color: '#8a8a8a',
     background_gray: '#1b1b1b',

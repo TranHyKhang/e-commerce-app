@@ -4,6 +4,7 @@ import {
     Text,
     StyleSheet,
     Button,
+    ScrollView
 } from 'react-native';
 
 
@@ -66,62 +67,65 @@ export function OrderConfirmScreen() {
     }
 
     return (
-        <View style={styles.container}>
-            <View>
-                <Header/>
-                <RenderUserInfo/>
-                <RenderCart/>
+        <ScrollView>
+            <View style={styles.container}>
+                <View>
+                    <Header/>
+                    <RenderUserInfo/>
+                    <RenderCart/>
 
-                <View style={{
-                    padding: 10
-                }}>
-                    <Text
-                        style={{
-                            fontWeight: '800',
-                            fontSize: 16
-                        }}
-                    >
-                        Payment method: 
-                    </Text>
-                    <RenderPaymentMethodItem
-                        checked={checked}
-                        value='Paypal'
-                        _handleRadioButtonOnPress={() => setChecked('Paypal')}
-                        label='Paypal'
-                        iconName='cc-paypal'
-                    />
-                    <RenderPaymentMethodItem
-                        checked={checked}
-                        value='COD'
-                        _handleRadioButtonOnPress={() => setChecked('COD')}
-                        label='COD'
-                        iconName='money'
-                    />
+                    <View style={{
+                        padding: 10
+                    }}>
+                        <Text
+                            style={{
+                                fontWeight: '800',
+                                fontSize: 16
+                            }}
+                        >
+                            Payment method: 
+                        </Text>
+                        <RenderPaymentMethodItem
+                            checked={checked}
+                            value='Paypal'
+                            _handleRadioButtonOnPress={() => setChecked('Paypal')}
+                            label='Paypal'
+                            iconName='cc-paypal'
+                        />
+                        <RenderPaymentMethodItem
+                            checked={checked}
+                            value='COD'
+                            _handleRadioButtonOnPress={() => setChecked('COD')}
+                            label='COD'
+                            iconName='money'
+                        />
+                    </View>
+
                 </View>
 
-            </View>
-
-           
             
-            <View style={styles.wrapButton}>
-                <View style={styles.wrapTotalMoney}>
-                    <Text style={styles.label}>Total: </Text>
-                    <Text style={styles.value}>{TotalMoney()}</Text>
-                    <Text style={styles.value}>$</Text>
+                
+                <View style={styles.wrapButton}>
+                    <View style={styles.wrapTotalMoney}>
+                        <Text style={styles.label}>Total: </Text>
+                        <Text style={styles.value}>{TotalMoney()}</Text>
+                        <Text style={styles.value}>$</Text>
+                    </View>
+
+                    <CustomButton title="Next" _handleEvent={() => handleSelectOption()}/>
+
                 </View>
 
-                <CustomButton title="Next" _handleEvent={() => handleSelectOption()}/>
-
+                <RenderPaypalView 
+                    paymentStatus={paymentStatus} 
+                    setPaymentStatus={setPaymentStatus}
+                    modalIsVisible={modalIsVisible}
+                    setModalIsVisible={setModalIsVisible}
+                    paymentMethod={checked}
+                />
             </View>
-
-            <RenderPaypalView 
-                paymentStatus={paymentStatus} 
-                setPaymentStatus={setPaymentStatus}
-                modalIsVisible={modalIsVisible}
-                setModalIsVisible={setModalIsVisible}
-                paymentMethod={checked}
-            />
-        </View>
+        </ScrollView>
+        
     )
 }
 

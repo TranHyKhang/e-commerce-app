@@ -35,6 +35,9 @@ export function ProfileScreen() {
     const isTabLeft = useSelector(state => state.bodyTabReducer.isTabLeft);
     const dispatch = useDispatch();
     
+
+    
+
     useEffect(() => {
         dispatch(GetUserInfo());
         console.log('useEffect run')
@@ -53,10 +56,13 @@ export function ProfileScreen() {
             <ModalOrderSuccess/>
 
             {
+                user !== null ?
                 isTabLeft ?
                 <RenderBodyFavorites/>
                 :
                 <RenderBodyTrackingOrder/>
+                :
+                null
             }
         </ScrollView>
     )

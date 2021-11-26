@@ -72,6 +72,19 @@ export const cartReducer = (state = initialState, action) => {
                 modalOrderSuccessVisible: false
             }
         }
+
+        //Remove item
+        case Types.REMOVE_CART_ITEM_REQUEST: 
+            return {
+                ...state,
+                isLoading: true
+            }
+        case Types.REMOVE_CART_ITEM_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                carts: state.carts.filter(item => item.productID == action.payload)
+            }
         default: 
             return state;
         
