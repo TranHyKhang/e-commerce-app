@@ -23,21 +23,12 @@ import Entypo from 'react-native-vector-icons/Entypo'
 
 const {width} = Dimensions.get('screen')
 
-export function RenderCartItem({item, index}) {
+export function RenderCartItem({item, index, product}) {
 
-    const products = useSelector(state => state.productReducer.products);
     const dispatch = useDispatch();
 
-    const [product, setProduct] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
     const [quantity, setQuantity] = useState(item.quantity);
 
-    function GetProductByID(id) {
-        for(let item of products) {
-            if(item._id == id)
-                return item;
-        }
-    }
 
     function increaseQuantity() {
         setQuantity(quantity + 1);
@@ -49,91 +40,81 @@ export function RenderCartItem({item, index}) {
         dispatch(UpdateProductQuantity(quantity - 1, index))
 
     }
-
-    useEffect(() => {
-        setProduct(GetProductByID(item.productID));
-        setIsLoading(false)
-    },[product])
     
-
+    
     //Animation
     const scrollX = new Animated.Value(0);
     const scrollClick = useRef(null);
 
     return (
-        isLoading ?
 
-        <LoadingScreen/>
-
-        :
-
-            <Animated.ScrollView
-                ref={scrollClick}
-                horizontal
-                snapToInterval={width}
-                scrollTo={{ x: scrollClick, animated: true }}
-                showsHorizontalScrollIndicator={false}
-                onScroll={Animated.event(
-                [{ nativeEvent: { contentOffset: { x: scrollX } } }],
-                { useNativeDriver: false }
-                )}
-            >
-                <View style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    padding: 10,
-                    backgroundColor: Colors.white,
-                    borderBottomWidth: 1,
-                    borderColor: Colors.sub_title_color,
-                    width: width
-                }}>
-                    <View style={styles.container}>
-                        <Image source={{uri: product.productImageUrl}} style={styles.productImage}/>
+        <Animated.ScrollView
+            ref={scrollClick}
+            horizontal
+            snapToInterval={width}
+            scrollTo={{ x: scrollClick, animated: true }}
+            showsHorizontalScrollIndicator={false}
+            onScroll={Animated.event(
+            [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+            { useNativeDriver: false }
+            )}
+        >
+            <View style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                padding: 10,
+                backgroundColor: Colors.white,
+                borderBottomWidth: 1,
+                borderColor: Colors.sub_title_color,
+                width: width
+            }}>
+                <View style={styles.container}>
+                    <Image source={{uri: product.productImageUrl}} style={styles.productImage}/>
+                    
+                    <View style={styles.wrapOrderInfo}>
+                        <Text style={styles.productName}>{product.productName}</Text>
+                        <View style={styles.wrapSubInfo}>
+                            <Text>Size: </Text>
+                            <Text style={styles.valueStyle}>{item.productSize}</Text>
+                        </View>
+                        <View style={styles.wrapSubInfo}>
+                            <Text>Price: </Text>
+                            <Text style={styles.valueStyle}>{product.productPrice}</Text>
+                            <Text style={styles.valueStyle}>$</Text>
+                        </View>
                         
-                        <View style={styles.wrapOrderInfo}>
-                            <Text style={styles.productName}>{product.productName}</Text>
-                            <View style={styles.wrapSubInfo}>
-                                <Text>Size: </Text>
-                                <Text style={styles.valueStyle}>{item.productSize}</Text>
-                            </View>
-                            <View style={styles.wrapSubInfo}>
-                                <Text>Price: </Text>
-                                <Text style={styles.valueStyle}>{product.productPrice}</Text>
-                                <Text style={styles.valueStyle}>$</Text>
-                            </View>
-                            
-                        </View>
-                    </View>
-                    <View style={styles.wrapQuantity}>
-                        <QuantityButton 
-                            iconName="minus"
-                            _handleEvent={decreaseQuantity}
-                            UpdateProductQuantity={() => dispatch(UpdateProductQuantity(quantity, index))}
-                        />
-                        <View style={styles.quantity}>
-                            <Text style={styles.valueStyle}>{quantity}</Text>
-                        </View>
-                        <QuantityButton 
-                            iconName="plus"
-                            _handleEvent={increaseQuantity}
-                            UpdateProductQuantity={() => dispatch(UpdateProductQuantity(quantity, index))}
-
-                        />
                     </View>
                 </View>
+                <View style={styles.wrapQuantity}>
+                    <QuantityButton 
+                        iconName="minus"
+                        _handleEvent={decreaseQuantity}
+                        UpdateProductQuantity={() => dispatch(UpdateProductQuantity(quantity, index))}
+                    />
+                    <View style={styles.quantity}>
+                        <Text style={styles.valueStyle}>{quantity}</Text>
+                    </View>
+                    <QuantityButton 
+                        iconName="plus"
+                        _handleEvent={increaseQuantity}
+                        UpdateProductQuantity={() => dispatch(UpdateProductQuantity(quantity, index))}
 
-                    <Animated.View>
-                        <TouchableOpacity
-                            style={styles.wrapTrashIcon}
-                            onPress={() => dispatch(removeItemInCart(item.productID))}
-                        >
-                            <Entypo name='trash' size={30} color={Colors.white}/>
-                        </TouchableOpacity>
-                    </Animated.View>
-                
-            </Animated.ScrollView>
+                    />
+                </View>
+            </View>
+
+                <Animated.View>
+                    <TouchableOpacity
+                        style={styles.wrapTrashIcon}
+                        onPress={() => dispatch(removeItemInCart(index))}
+                    >
+                        <Entypo name='trash' size={30} color={Colors.white}/>
+                    </TouchableOpacity>
+                </Animated.View>
+            
+        </Animated.ScrollView>
 
         
         

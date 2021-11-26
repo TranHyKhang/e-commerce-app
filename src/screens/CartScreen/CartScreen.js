@@ -42,6 +42,7 @@ export function CartScreen() {
     const isLoading = useSelector(state => state.cartReducer.isLoading);
     const carts = useSelector(state => state.cartReducer.carts);
     const user = useSelector(state => state.authReducer.user);
+    const products = useSelector(state => state.productReducer.products);
 
     const navigation = useNavigation();
 
@@ -64,6 +65,13 @@ export function CartScreen() {
         }
     }
 
+    function GetProductByID(id) {
+        for(let item of products) {
+            if(item._id == id)
+                return item;
+        }
+    }
+
     return (
         isLoading ?
 
@@ -75,7 +83,7 @@ export function CartScreen() {
             <Header/>
 
             {
-                carts === null ?
+                carts === null || carts.length === 0 ?
                 <View style={{
                     display: 'flex',
                     justifyContent: 'center',
@@ -86,14 +94,20 @@ export function CartScreen() {
                 :
                 <FlatList
                     data={carts}
-                    renderItem={({item, index}) => <RenderCartItem item={item} index={index}/>}
+                    renderItem={
+                        ({item, index}) => <RenderCartItem 
+                            item={item} 
+                            product={GetProductByID(item.productID)} 
+                            index={index}
+                        />
+                    }
                 />
             }
             
             {/* <Button title='See cart' onPress={() => console.log(carts)}/>
             <Button title='Clear cart' onPress={() => clearCart()}/> */}
 
-            {/* <Button title="haha" onPress={() => console.log(user !== null)}/> */}
+            {/* <Button title="haha" onPress={() => console.log(carts)}/> */}
 
             <UserInfoModal isVisible={isVisible} setIsVisible={setIsVisible}/>
             

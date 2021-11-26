@@ -38,14 +38,14 @@ export const cartReducer = (state = initialState, action) => {
                 isLoading: true
             }
         case Types.UPDATE_PRODUCT_QUANTITY_SUCCESS: {
-            let newArr = [
-                ...state.carts
-            ]
-            newArr[action.payload.index].quantity = action.payload.quantity;
+            // let newArr = [
+            //     ...state.carts
+            // ]
+            // newArr[action.payload.index].quantity = action.payload.quantity;
             return {
                 ...state,
                 isLoading: false,
-                carts:newArr
+                carts: action.payload
             }
         }
             
@@ -79,12 +79,20 @@ export const cartReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: true
             }
-        case Types.REMOVE_CART_ITEM_SUCCESS:
+        case Types.REMOVE_CART_ITEM_SUCCESS: {
+            // state.carts.splice(action.payload, 1);
+            // let arr = [];
+            // for(let x of state.carts) {
+            //     if(state.carts.indexOf(x) !== action.payload)
+            //         arr.push(x);
+            // }
+            // console.log(arr)
             return {
                 ...state,
                 isLoading: false,
-                carts: state.carts.filter(item => item.productID == action.payload)
+                carts: action.payload
             }
+        }
         default: 
             return state;
         

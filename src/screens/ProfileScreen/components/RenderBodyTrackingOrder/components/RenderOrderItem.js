@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
         fontWeight: '700'
     },
     labelStyle: {
-        fontWeight: '700'
+        fontWeight: '700',
+        paddingBottom: 5
     }
 })

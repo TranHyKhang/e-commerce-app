@@ -58,10 +58,18 @@ export const AddToCart = (productID, productSize) => {
 }
 
 export const UpdateProductQuantity = (quantity, index) => {
-    return (dispatch) => {
+    return async(dispatch) => {
         dispatch({type: Types.UPDATE_PRODUCT_QUANTITY_REQUEST})
         try {
-            dispatch({type: Types.UPDATE_PRODUCT_QUANTITY_SUCCESS, payload: {quantity, index}})
+            let arr = await AsyncStorage.getItem('cart')
+            let newArr = JSON.parse(arr);
+            newArr[index].quantity = quantity;
+            await AsyncStorage.setItem('cart', JSON.stringify(newArr));
+            console.log(newArr)
+
+            let arrUpdated = await AsyncStorage.getItem('cart');
+            let newArrUpdated = JSON.parse(arrUpdated)
+            dispatch({type: Types.UPDATE_PRODUCT_QUANTITY_SUCCESS, payload: newArrUpdated})
         } catch(err) {
             console.log(err);
         }
@@ -107,11 +115,23 @@ export const closeModalOrderSuccess = () => {
     }
 }
 
-export const removeItemInCart = (productID) => {
+export const removeItemInCart = (index) => {
     return async(dispatch) => {
         dispatch({type: Types.REMOVE_CART_ITEM_REQUEST})
         try {
-            dispatch({type:Types.REMOVE_CART_ITEM_SUCCESS, payload: productID})
+            let a = await AsyncStorage.getItem('cart');
+            let b = JSON.parse(a);
+
+            let arr = [];
+            for(let x of b) {
+                if(b.indexOf(x) !== index)
+                    arr.push(x);
+            }
+
+            await AsyncStorage.setItem('cart', JSON.stringify(arr));
+
+            let c = await AsyncStorage.getItem('cart');
+            dispatch({type:Types.REMOVE_CART_ITEM_SUCCESS, payload: JSON.parse(c)})
         } catch(err) {
             console.log(err);
         }

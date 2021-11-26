@@ -79,8 +79,8 @@ export function RenderDetailOrder({item}) {
                 ]}
             >
                 {/* <Button title="haha" onPress={() => console.log(item)}/> */}
-                <Text style={{fontWeight: '700', fontSize: 18}}>Payment status:</Text>
-                <Text style={{fontWeight: '700', fontSize: 18, paddingRight: 10}}>
+                <Text style={{fontWeight: '700'}}>Payment status:</Text>
+                <Text style={{fontWeight: '900', paddingRight: 10}}>
                     {
                         item.paymentStatus === 1 ?
                         'Completed'
@@ -99,8 +99,8 @@ export function RenderDetailOrder({item}) {
                     }
                 ]}
             >
-                <Text style={{fontWeight: '700', fontSize: 18}}>Total:</Text>
-                <Text style={{fontWeight: '700', fontSize: 18}}>{TotalMoney() + '$'}</Text>
+                <Text style={{fontWeight: '700'}}>Total:</Text>
+                <Text style={{fontWeight: '900'}}>{TotalMoney() + '$'}</Text>
             </View>
         </View>
     )
@@ -118,12 +118,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     labelStyle: {
-        color: Colors.white,
+        color: Colors.black,
         fontWeight: '700'
     },
     valueStyle: {
         fontWeight: '700',
-        color: Colors.white
+        color: Colors.black
     },
     wrapOrderDetail: {
         padding: 10
