@@ -12,6 +12,7 @@ import {useSelector} from 'react-redux';
 import Colors from '../../../../../utils/Colors';
 
 import {RenderProductItem} from './RenderProductItem';
+import {RenderOrderStatus} from './RenderOrderStatus';
 
 export function RenderDetailOrder({item}) {
 
@@ -66,6 +67,8 @@ export function RenderDetailOrder({item}) {
                 />
             </View>
 
+            <RenderOrderStatus item={item}/>
+
             <View 
                 style={[
                     styles.wrapLabelValue, 
@@ -77,7 +80,7 @@ export function RenderDetailOrder({item}) {
             >
                 {/* <Button title="haha" onPress={() => console.log(item)}/> */}
                 <Text style={{fontWeight: '700', fontSize: 18}}>Payment status:</Text>
-                <Text style={{fontWeight: '700', fontSize: 18}}>
+                <Text style={{fontWeight: '700', fontSize: 18, paddingRight: 10}}>
                     {
                         item.paymentStatus === 1 ?
                         'Completed'

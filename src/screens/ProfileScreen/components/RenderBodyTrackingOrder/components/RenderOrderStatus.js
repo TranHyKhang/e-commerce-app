@@ -1,10 +1,85 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { 
+    View, 
+    Text,
+    StyleSheet,
+    Button
+} from 'react-native'
 
-export function RenderOrderStatus() {
+import Colors from '../../../../../utils/Colors';
+
+//Icon
+import Entypo from 'react-native-vector-icons/Entypo'
+//location-pin
+//dropbox
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+//truck-delivery
+export function RenderOrderStatus({item}) {
     return (
-        <View>
-            <Text></Text>
+        <View style={styles.container}>
+            <View 
+                style={[
+                    styles.wrapIcon,
+                    {
+                        backgroundColor: Colors.tab_button_focused_blue
+                    }
+                ]}
+            >
+                <Entypo name='dropbox' size={25}/>
+            </View>
+
+
+            <View 
+                style={[
+                    styles.lineStyle,
+                    {
+                        backgroundColor: item.orderStatus > 0 ? Colors.tab_button_focused_blue : Colors.sub_title_color
+                    }
+                ]}
+            >
+            </View>
+            <View style={[
+                styles.wrapIcon,
+                {
+                    backgroundColor: item.orderStatus > 0 ? Colors.tab_button_focused_blue : Colors.sub_title_color
+                }
+            ]}>
+                <MaterialCommunityIcons name='truck-delivery' size={25}/>
+            </View>
+
+            <View style={[
+                    styles.lineStyle,
+                    {
+                        backgroundColor: item.orderStatus > 1 ? Colors.tab_button_focused_blue : Colors.sub_title_color
+                    }
+                ]}></View>
+            <View style={[
+                styles.wrapIcon,
+                {
+                    backgroundColor: item.orderStatus > 1 ? Colors.tab_button_focused_blue : Colors.sub_title_color
+                }
+            ]}>
+                <Entypo name='location-pin' size={25}/>
+            </View>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingTop: 10,
+        paddingBottom: 20
+    },
+    lineStyle: {
+        width: 100,
+        height: 5,
+    },
+    wrapIcon: {
+        padding: 10,
+        borderRadius: 100,
+    }
+})
