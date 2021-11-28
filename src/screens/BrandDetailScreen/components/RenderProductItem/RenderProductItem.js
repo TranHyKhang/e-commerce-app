@@ -40,7 +40,7 @@ export function RenderProductItem({item}) {
     //Render icon heart like or dislike
     function renderFavoriteIcon(arr, item) {
         for(let x of arr) {
-            if(x == item._id) {
+            if(x._id == item._id) {
                 return true;
             }
         }
@@ -50,8 +50,9 @@ export function RenderProductItem({item}) {
     return (
         <TouchableOpacity
             onPress={() => {
-                navigation.navigate('ProductDetailScreen', {item});
-                dispatch(HideTabBar());
+                // navigation.navigate('ProductDetailScreen', {item});
+                // dispatch(HideTabBar());
+                console.log(favoriteProducts)
             }}
         >
             <View style={styles.container}>

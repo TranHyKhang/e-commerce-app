@@ -24,18 +24,38 @@ export const productReducer = (state = initialState, action) => {
                 brands: action.payload.brands
             }
         }
-        case Types.ADD_FAVORITE_ITEM:
+        case Types.GET_FAVORITE_ITEMS_REQUEST:
             return {
                 ...state,
-                favoriteProducts: [
-                    ...state.favoriteProducts,
-                    action.payload
-                ]
+                isLoading: true
             }
-        case Types.REMOVE_FAVORITE_ITEM:
+        case Types.GET_FAVORITE_ITEMS_SUCCESS:
             return {
                 ...state,
-                favoriteProducts: state.favoriteProducts.filter(item => item !== action.payload)
+                isLoading: false,
+                favoriteProducts: action.payload
+            }
+        case Types.ADD_FAVORITE_ITEM_REQUEST:
+            return {
+                ...state,
+                isLoading: true
+            }
+        case Types.ADD_FAVORITE_ITEM_SUCCESS: 
+            return {
+                ...state,
+                isLoading: false,
+                favoriteProducts: action.payload
+            }
+        case Types.REMOVE_FAVORITE_ITEM_REQUEST:
+            return {
+                ...state,
+                isLoading: true
+            }
+        case Types.REMOVE_FAVORITE_ITEM_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                favoriteProducts: action.payload
             }
         default: 
             return state;
