@@ -2,7 +2,8 @@ import React from 'react';
 import {
     StyleSheet, 
     ScrollView, 
-    LogBox 
+    LogBox, View ,
+    StatusBar
 } from 'react-native';
 
 import Colors from  '../../utils/Colors';
@@ -58,11 +59,14 @@ export function BrandDetailScreen({route}) {
 
     return (
         <ScrollView style={styles.container} onScroll={onScroll}>
+            <StatusBar  barStyle='light-content' hidden/>
+
             <IntroduceBrand 
                 brandName={item.productBrand} 
                 brandDescription={item.productBrandDescription}
             />
             <RenderProducts products={productFiltered}/>
+            <View></View>
         </ScrollView>
         
     )

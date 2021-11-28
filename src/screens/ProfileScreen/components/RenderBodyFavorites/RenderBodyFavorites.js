@@ -1,5 +1,11 @@
 import React from 'react'
-import { View, Text, Button } from 'react-native'
+import { 
+    View, 
+    Text, 
+    Button,
+    FlatList, 
+    ScrollView
+} from 'react-native'
 
 
 //Redux
@@ -8,6 +14,7 @@ import {GetFavoriteProducts} from '../../../../actions'
 
 //Loading Screen
 import {LoadingScreen} from '../../../LoadingScreen'
+import {RenderProductItem} from './components'
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
@@ -34,10 +41,12 @@ export function RenderBodyFavorites() {
         <LoadingScreen/>
         :
         
-        <View>
-            <Text>RenderBodyFavorites</Text>
-            <Button title='Get data' onPress={() => getData()}/>
-            <Button title='See data' onPress={() => doSomeThing()}/>
-        </View>
+        <ScrollView>
+            <FlatList
+                numColumns={2}
+                data={favoriteProducts}
+                renderItem={({item}) => <RenderProductItem item={item}/>}
+            />
+        </ScrollView>
     )
 }
