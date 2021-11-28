@@ -40,11 +40,11 @@ export function IntroduceBrand({brandName, brandDescription}) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: Colors.background_gray,
+        backgroundColor: Colors.black,
         paddingTop: 50,
-        paddingBottom: 70,
+        paddingBottom: 50,
         paddingLeft: 15,
-        paddingRight: 15
+        paddingRight: 15,
     },
     wrapHeader: {
         display: 'flex',
@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
         color: Colors.introduce_content,
         paddingTop: 50,
         fontSize: 15,
-        lineHeight: 25
-
+        lineHeight: 25,
     }
 })

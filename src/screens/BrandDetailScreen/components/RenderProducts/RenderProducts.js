@@ -30,12 +30,6 @@ export function RenderProducts({products}) {
                 renderItem={({item}) => <RenderProductItem item={item}/>}
                 keyExtractor={(item) => item._id}
             />
-            <FlatList
-                numColumns={2}
-                data={products}
-                renderItem={({item}) => <RenderProductItem item={item}/>}
-                keyExtractor={(item) => item._id}
-            />
         </View>
     )
 }

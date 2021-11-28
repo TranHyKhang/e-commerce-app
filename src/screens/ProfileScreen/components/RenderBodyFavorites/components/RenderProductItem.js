@@ -50,9 +50,9 @@ export function RenderProductItem({item}) {
     return (
         <TouchableOpacity
             onPress={() => {
-                // navigation.navigate('ProductDetailScreen', {item});
-                // dispatch(HideTabBar());
-                console.log(favoriteProducts)
+                navigation.navigate('ProductDetailScreen', {item});
+                dispatch(HideTabBar());
+                // console.log(favoriteProducts)
             }}
         >
             <View style={styles.container}>
