@@ -14,6 +14,8 @@ import Colors from '../../utils/Colors';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
+import Modal from 'react-native-modal';
+
 import {useNavigation} from '@react-navigation/native';
 
 //Redux
@@ -27,7 +29,8 @@ import {useDispatch} from 'react-redux';
 //Component
 import {
     CustomButton,
-    RenderSizeItem
+    RenderSizeItem,
+    ModalNotification
 } from './components'
 
 const {width,height} = Dimensions.get('screen');
@@ -35,6 +38,7 @@ const {width,height} = Dimensions.get('screen');
 export function ProductDetailScreen({route}) {
 
     const [size , setSize] = useState('');
+    const [isVisible, setIsVisible] = useState(false);
 
     const {item} = route.params;
 
@@ -144,9 +148,14 @@ export function ProductDetailScreen({route}) {
                 </View>
             </View>
 
+            <ModalNotification item={item} isVisible={isVisible} setIsVisible={setIsVisible}/>
+
             
 
-            <CustomButton _handleEvent={() => dispatch(AddToCart(item._id, size))}/>
+            <CustomButton _handleEvent={() => {
+                dispatch(AddToCart(item._id, size));
+                setIsVisible(true)
+            }}/>
         </ScrollView>
     )
 }
@@ -203,6 +212,17 @@ const styles = StyleSheet.create({
     },
     priceStyle: {
         fontWeight:'800'
-    }
+    },
     
+    //Modal
+    modalContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    wrapModalContent: {
+        width: 100,
+        height: 100,
+        backgroundColor: Colors.white
+    }
 })

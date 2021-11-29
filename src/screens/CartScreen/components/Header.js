@@ -24,7 +24,7 @@ export function Header() {
             <Text style={styles.headerTitle}>Cart</Text>
             <TouchableOpacity 
                 onPress={() => {
-                    navigation.goBack();
+                    navigation.navigate('ProfileStack', {screen: 'ProfileScreen'});
                     dispatch(UnHideTabBar());
                 }}
                 style={styles.headerIcon}

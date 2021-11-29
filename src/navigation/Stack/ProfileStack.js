@@ -19,6 +19,7 @@ export const ProfileStack = () => {
             screenOptions={({route}) => ({
                 headerShown: false
             })}
+            initialRouteName='ProfileScreen'
         >
             <Stack.Screen name='ProfileScreen' component={ProfileScreen}/>
             <Stack.Screen name='CartScreen' component={CartScreen}/>
