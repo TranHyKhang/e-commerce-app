@@ -7,7 +7,8 @@ import {
     CatalogScreen,
     BrandDetailScreen,
     ProductDetailScreen,
-    OrderScreen
+    OrderScreen,
+    CartScreen
 } from '../../screens'
 
 const Stack = createStackNavigator();
@@ -23,6 +24,7 @@ export const CatalogStack = () => {
             <Stack.Screen name='BrandDetailScreen' component={BrandDetailScreen}/>
             <Stack.Screen name='ProductDetailScreen' component={ProductDetailScreen}/>
             <Stack.Screen name='OrderScreen' component={OrderScreen}/>
+            <Stack.Screen name='CatalogCartScreen' component={CartScreen}/>
         </Stack.Navigator>
     )
 }

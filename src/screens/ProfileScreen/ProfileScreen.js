@@ -23,7 +23,7 @@ import {
 } from './components';
 
 //Actions
-import {GetUserInfo} from '../../actions'
+import {GetUserInfo, ScrollDownEvent, ScrollUpEvent} from '../../actions'
 
 //Colors
 import Colors from '../../utils/Colors';
@@ -35,7 +35,24 @@ export function ProfileScreen() {
     const isTabLeft = useSelector(state => state.bodyTabReducer.isTabLeft);
     const dispatch = useDispatch();
     
+    /* 
+    --------------------------------------------    
+    Set the tab navigator hide when scroll down
+    */
+    let offSet = 0;
 
+    function onScroll(event) {
+        let currentOffSet = event.nativeEvent.contentOffset.y;
+        let direction = currentOffSet > offSet ? 'down' : 'up';
+        offSet = currentOffSet;
+        console.log(currentOffSet)
+        if(direction == 'down') {
+            dispatch(ScrollDownEvent())
+        } else {
+            dispatch(ScrollUpEvent())
+        }
+    }
+    //-------------------------------------------
     
 
     useEffect(() => {
@@ -50,7 +67,7 @@ export function ProfileScreen() {
         
         :
 
-        <ScrollView style={styles.container}>
+        <ScrollView style={styles.container} onScroll={onScroll}>
             <HeaderDisplayInfo/>
             <BodyTab/>
             <ModalOrderSuccess/>
@@ -64,6 +81,7 @@ export function ProfileScreen() {
                 :
                 null
             }
+
         </ScrollView>
     )
 }

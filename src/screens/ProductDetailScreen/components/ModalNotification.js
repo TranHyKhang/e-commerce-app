@@ -55,7 +55,7 @@ export function ModalNotification({ isVisible, setIsVisible, item}) {
                     </View>
 
                     <View style={{width: '100%'}}>
-                        <CustomButton title='Go to cart' _handleEvent={() => {navigation.navigate('ProfileStack', {screen: 'CartScreen'})}}/>
+                        <CustomButton title='Go to cart' _handleEvent={() => {navigation.navigate('CatalogCartScreen'); setIsVisible(false)}}/>
                         <TouchableOpacity
                             onPress={() => setIsVisible(false)}
                         >

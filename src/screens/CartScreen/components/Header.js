@@ -7,7 +7,7 @@ import {
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 //redux
 import {useDispatch} from 'react-redux';
@@ -18,14 +18,20 @@ export function Header() {
 
     const navigation = useNavigation();
     const dispatch = useDispatch();
+    const route = useRoute();
 
     return (
         <View style={styles.container}>
             <Text style={styles.headerTitle}>Cart</Text>
             <TouchableOpacity 
                 onPress={() => {
-                    navigation.navigate('ProfileStack', {screen: 'ProfileScreen'});
-                    dispatch(UnHideTabBar());
+                    
+                    if(route.name === "CartScreen") {
+                        navigation.goBack();
+                        dispatch(UnHideTabBar());
+                    } else {
+                        navigation.goBack();
+                    }
                 }}
                 style={styles.headerIcon}
             >
