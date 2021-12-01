@@ -4,7 +4,8 @@ import {
     Text,
     TouchableOpacity,
     Modal,
-    StyleSheet
+    StyleSheet,
+    StatusBar
 } from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
@@ -20,7 +21,7 @@ import {createOrder, openModalOrderSuccess} from '../../../actions';
 
 import Colors from '../../../utils/Colors'
 
-export function RenderPaypalView({paymentStatus,setPaymentStatus, modalIsVisible, setModalIsVisible, paymentMethod}) {
+export function RenderPaypalView({TotalMoney, paymentStatus,setPaymentStatus, modalIsVisible, setModalIsVisible, paymentMethod}) {
 
     const navigation = useNavigation();
     const dispatch = useDispatch();
@@ -46,6 +47,11 @@ export function RenderPaypalView({paymentStatus,setPaymentStatus, modalIsVisible
         }
     }
 
+    const obj = {
+        carts: carts,
+        TotalMoney: TotalMoney
+    }
+
     return (
         <View>
             <Modal
@@ -53,15 +59,18 @@ export function RenderPaypalView({paymentStatus,setPaymentStatus, modalIsVisible
                 onRequestClose={() => setModalIsVisible(false)}
             >
                 <TouchableOpacity 
-                    // onPress={() => setModalIsVisible(false)}
-                    onPress={() => console.log(user, carts, paymentStatus, paymentMethod)}
+                    onPress={() => setModalIsVisible(false)}
                 >
                     <View style={styles.headerContainer}>
-                        <AntDesign name='close' size={30} color={Colors.white}/>
+                        <AntDesign name='close' size={30} color={Colors.black}/>
                     </View>
                 </TouchableOpacity>
                 <WebView
-                    source={{uri: API_URL}}
+                    source={{
+                        uri: API_URL + '/paypal', 
+                        method: 'POST',
+                        body: 'Data=' + JSON.stringify({carts: carts, TotalMoney: TotalMoney}),
+                    }}
                     onNavigationStateChange={data => handleResponse(data)}
                 />
             </Modal>
@@ -71,7 +80,7 @@ export function RenderPaypalView({paymentStatus,setPaymentStatus, modalIsVisible
 
 const styles = StyleSheet.create({
     headerContainer: {
-        backgroundColor: Colors.pink_fire,
+        // backgroundColor: Colors.pink_fire,
         padding: 10,
         display: 'flex',
         alignItems:'flex-end'

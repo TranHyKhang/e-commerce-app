@@ -23,7 +23,7 @@ import {Header} from './components'
 
 //redux
 import {useDispatch} from 'react-redux';
-import {postLogin} from '../../actions';
+import {postLogin, UnHideTabBar} from '../../actions';
 
 
 const {width, height} = Dimensions.get('screen');
@@ -77,7 +77,8 @@ export function LoginScreen() {
                     {/* Push login in here */}
                     <CustomButton title='Login' _handleEvent={() => {
                         dispatch(postLogin(email, password, navigation));
-                        navigation.navigate('ProfileScreen')
+                        navigation.navigate('ProfileScreen');
+                        dispatch(UnHideTabBar())
                     }}/>
                 </View>
 

@@ -27,6 +27,6 @@ export function QuantityButton({iconName, _handleEvent, UpdateProductQuantity}) 
 
 const styles = StyleSheet.create({
     container: {
-
+        // borderWidth: 1
     }
 })

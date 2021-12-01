@@ -65,9 +65,20 @@ export function RenderCartItem({item, index, product}) {
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 padding: 10,
-                backgroundColor: Colors.white,
-                borderBottomWidth: 1,
-                borderColor: Colors.sub_title_color,
+                // backgroundColor: Colors.white,
+                // borderBottomWidth: 3,
+                // borderColor: Colors.sub_title_color,
+                // shadowColor: "#000",
+                // shadowOffset: {
+                //     width: 0,
+                //     height: 1,
+                // },
+                // shadowOpacity: 0.20,
+                // shadowRadius: 1.41,
+                
+                // elevation: 2,
+                // // background color must be set
+                // backgroundColor : "#0000", // invisible color
                 width: width
             }}>
                 <View style={styles.container}>
@@ -76,11 +87,11 @@ export function RenderCartItem({item, index, product}) {
                     <View style={styles.wrapOrderInfo}>
                         <Text style={styles.productName}>{product.productName}</Text>
                         <View style={styles.wrapSubInfo}>
-                            <Text>Size: </Text>
+                            <Text style={styles.valueStyle}>Size: </Text>
                             <Text style={styles.valueStyle}>{item.productSize}</Text>
                         </View>
                         <View style={styles.wrapSubInfo}>
-                            <Text>Price: </Text>
+                            <Text style={styles.valueStyle}>Price: </Text>
                             <Text style={styles.valueStyle}>{product.productPrice}</Text>
                             <Text style={styles.valueStyle}>$</Text>
                         </View>
@@ -125,11 +136,13 @@ const styles = StyleSheet.create({
     container: {    
         display: 'flex',
         flexDirection:'row',
-        backgroundColor: Colors.white
+        backgroundColor: Colors.white,
+        
     },
     productImage: {
         width: 100,
-        height: 100
+        height: 100,
+        marginRight: 5
     },
     wrapOrderInfo: {
         display: 'flex',
@@ -147,9 +160,11 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
+        // borderWidth: 2,
+        justifyContent: 'space-evenly'
     },
     quantity: {
-        borderWidth: 0.9,
+        borderWidth: 2,
         padding: 8,
         marginLeft: 10,
         marginRight: 10

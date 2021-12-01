@@ -67,10 +67,10 @@ export function OrderConfirmScreen() {
     }
 
     return (
-        <ScrollView>
+        <ScrollView style={{display: 'flex', flex: 1}}>
             <View style={styles.container}>
                 <View>
-                    <Header/>
+                    <Header modalIsVisible={modalIsVisible} setModalIsVisible={setModalIsVisible}/>
                     <RenderUserInfo/>
                     <RenderCart/>
 
@@ -122,6 +122,7 @@ export function OrderConfirmScreen() {
                     modalIsVisible={modalIsVisible}
                     setModalIsVisible={setModalIsVisible}
                     paymentMethod={checked}
+                    TotalMoney={TotalMoney()}
                 />
             </View>
         </ScrollView>
@@ -133,10 +134,10 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        backgroundColor: 'white'
     },
     wrapButton: {
-    
     },
     wrapTotalMoney: {
         display: 'flex',

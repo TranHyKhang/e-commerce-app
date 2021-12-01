@@ -1,34 +1,59 @@
 import React from 'react'
-import { View, Text, StyleSheet, Image, ImageBackground } from 'react-native'
+import { 
+    View, 
+    Text, 
+    StyleSheet, 
+    ImageBackground,
+    TouchableOpacity
+} from 'react-native'
 
 import Colors from '../../../../../../utils/Colors'
+
+import {useNavigation} from '@react-navigation/native';
+
+import {useDispatch} from 'react-redux';
+import {HideTabBar} from '../../../../../../actions'
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 export function RenderCarouselItem({item}) {
+
+    const navigation = useNavigation();
+    const dispatch = useDispatch();
+
     return (
-        <View style={styles.container}>
-            <MaterialCommunityIcons 
-                color={Colors.pink_fire} 
-                size={30} 
-                name="fire"
-                style={styles.fireIcon}
-            />
-            <ImageBackground 
-                source={{uri: item.productImageUrl}}
-                style={styles.imageStyle}
-                resizeMode='cover'
-            />
-            <View style={styles.wrapTitle}>
-                <Text style={styles.productBrandName}>
-                    {item.productBrandName}
-                </Text>
-                <Text style={styles.productName}>
-                    {item.productName}
-                </Text>
+        <TouchableOpacity
+            activeOpacity={0.95}
+            onPress={() => {
+                navigation.navigate('ProductDetailScreen', {item});
+                dispatch(HideTabBar());
+                // console.log(favoriteProducts)
+            }}
+        >
+            <View style={styles.container}>
+                <MaterialCommunityIcons 
+                    color={Colors.pink_fire} 
+                    size={30} 
+                    name="fire"
+                    style={styles.fireIcon}
+                />
+                <ImageBackground 
+                    source={{uri: item.productImageUrl}}
+                    style={styles.imageStyle}
+                    resizeMode='cover'
+                />
+                <View style={styles.wrapTitle}>
+                    <Text style={styles.productBrandName}>
+                        {item.productBrandName}
+                    </Text>
+                    <Text style={styles.productName}>
+                        {item.productName}
+                    </Text>
+                </View>
+                
             </View>
-            
-        </View>
+        </TouchableOpacity>
+        
     )
 }
 

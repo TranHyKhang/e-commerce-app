@@ -15,7 +15,7 @@ export function CustomButton({_handleEvent}) {
                 style={{
                     display: 'flex',
                     alignItems: 'center',
-                    marginTop: 10,
+                    // marginTop: 10,
                     backgroundColor: Colors.white,
                     paddingTop: 20,
                     paddingBottom: 20

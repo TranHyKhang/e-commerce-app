@@ -63,6 +63,7 @@ export function ProductDetailScreen({route}) {
                         name='close' 
                         style={styles.closeIcon} 
                         size={30}
+                        
                     />
                 </TouchableOpacity>
                 
@@ -84,7 +85,7 @@ export function ProductDetailScreen({route}) {
                     </View>
 
                     <View>
-                        <Text>
+                        <Text style={{fontWeight: '600'}}>
                             {item.productDescription}
                         </Text>
                     </View>
@@ -110,12 +111,21 @@ export function ProductDetailScreen({route}) {
 
             </View>
 
-            <View style={styles.wrapPrice}>
+            <View 
+                style={[
+                    styles.wrapPrice,
+                    {
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                    }
+                ]}
+            >
 
                 <Text
                     style={{
                         fontWeight: '900',
-                        marginBottom: 10
                     }}
                 >
                     BUY IN STORE
@@ -123,10 +133,7 @@ export function ProductDetailScreen({route}) {
 
                 <View style={[styles.wrapInfoStore, {justifyContent: 'space-between'}]}>
 
-                    <View style={styles.wrapInfoStore}>
-                        <View style={{width: 30, height: 30, backgroundColor: 'black', borderRadius: 100, marginRight: 10}}></View>
-                        <Text style={styles.storeName}>StockK</Text>
-                    </View>
+                   
 
                     <View 
                         style={[
@@ -139,23 +146,28 @@ export function ProductDetailScreen({route}) {
                         ]}
                     >
 
-                        <Text style={{marginRight: 5}}>Buy from:</Text>
+                        <Text style={{marginRight: 5, fontWeight: '800'}}>Buy from:</Text>
 
                         <Text style={styles.priceStyle}>{'$' + item.productPrice}</Text>
 
                     </View>
 
+                    
+
                 </View>
+                
             </View>
-
-            <ModalNotification item={item} isVisible={isVisible} setIsVisible={setIsVisible}/>
-
-            
 
             <CustomButton _handleEvent={() => {
                 dispatch(AddToCart(item._id, size));
                 setIsVisible(true)
             }}/>
+
+            <ModalNotification item={item} isVisible={isVisible} setIsVisible={setIsVisible}/>
+
+            
+
+            
         </ScrollView>
     )
 }
@@ -167,7 +179,9 @@ const styles = StyleSheet.create({
     },
     closeIcon: {
         alignSelf: 'flex-end',
-        padding: 10
+        paddingRight: 15,
+        paddingTop: 30
+
     },
     productImage: {
         width: '100%',
@@ -193,14 +207,15 @@ const styles = StyleSheet.create({
 
     },
     productName: {
-        color: '#000'
+        color: '#000',
+        fontWeight: '600'
     },
 
     //price
     wrapPrice: {
         padding: 15,
         backgroundColor: Colors.white,
-        marginTop: 10
+        marginTop: 10,
     },
     wrapInfoStore: {
         display: 'flex',

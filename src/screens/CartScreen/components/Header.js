@@ -22,6 +22,7 @@ export function Header() {
 
     return (
         <View style={styles.container}>
+            <View></View>
             <Text style={styles.headerTitle}>Cart</Text>
             <TouchableOpacity 
                 onPress={() => {
@@ -51,10 +52,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 20,
+        paddingLeft: 15,
+        paddingRight: 15,
+        paddingTop: 40,
+        paddingBottom: 10,
         backgroundColor: 'white',
-        borderBottomWidth: 1,
-        borderColor: Colors.sub_title_color
+        // borderBottomWidth: 1,
+        // borderColor: Colors.sub_title_color
     },
     headerTitle: {
         fontSize: 25,
@@ -62,6 +66,7 @@ const styles = StyleSheet.create({
     },
     headerIcon: {
         position: 'absolute',
-        right: 20
+        right: 20,
+        top: 40
     }
 })

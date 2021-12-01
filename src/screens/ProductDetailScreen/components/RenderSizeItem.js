@@ -21,7 +21,7 @@ export function RenderSizeItem({item, _handleTouchEvent, size}) {
             onPress={() => _handleTouchEvent(item.productSize)}
         >
             <View style={[styles.container, {borderColor: isClick() ? Colors.pink_fire : Colors.sub_title_color}]}>
-                <Text>{item.productSize}</Text>
+                <Text style={{fontWeight: '800'}}>{item.productSize}</Text>
             </View>
         </TouchableOpacity>
         
@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        borderWidth: 1,
-        borderRadius: 5
+        borderWidth: 2,
+        borderRadius: 5,
+        borderColor: Colors.black
     }
 })
