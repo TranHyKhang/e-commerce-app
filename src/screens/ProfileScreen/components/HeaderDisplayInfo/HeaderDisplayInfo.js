@@ -34,6 +34,8 @@ const {width} = Dimensions.get('screen');
 export function HeaderDisplayInfo() {
 
     const user = useSelector(state => state.authReducer.user);
+    const favoriteProducts = useSelector(state => state.productReducer.favoriteProducts);
+
 
     const navigation = useNavigation();
     const dispatch = useDispatch();
@@ -108,7 +110,7 @@ export function HeaderDisplayInfo() {
                                         <Text style={styles.userMemberCard}>{'Member: ' + user.userMemberCard}</Text>
                                     </View>
                                     <View style={styles.wrapLikeCout}>
-                                        <Text style={styles.likeCountLabel}>Liked: </Text>
+                                        <Text style={styles.likeCountLabel}>{'Liked: ' + favoriteProducts.length }</Text>
                                     </View>
                                 </View>
                                 :

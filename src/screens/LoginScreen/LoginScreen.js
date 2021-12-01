@@ -125,9 +125,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     signUpOtionLabel: {
-        color: Colors.white
+        color: Colors.white,
+        fontWeight: '800'
+
     },
     signUpOptionLink: {
-        color: Colors.tab_button_focused_blue
+        color: Colors.tab_button_focused_blue,
+        fontWeight: '800'
     }
 })

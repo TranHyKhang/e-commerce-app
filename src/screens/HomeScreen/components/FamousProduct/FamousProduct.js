@@ -9,14 +9,28 @@ import {
 } from 'react-native';
 
 //Import redux hook
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {HideTabBar} from '../../../../actions'
+
+import {useNavigation} from '@react-navigation/native';
 
 // Get width, height of screen
 const {width, height} = Dimensions.get('screen')
 
 export function FamousProduct({item}) {
+
+    const dispatch = useDispatch();
+    const navigation = useNavigation();
+
     return (
-        <TouchableOpacity>
+        <TouchableOpacity
+        activeOpacity={0.95}
+        onPress={() => {
+            navigation.navigate('ProductDetailScreen', {item});
+            dispatch(HideTabBar());
+            // console.log(favoriteProducts)
+        }}
+        >
             <View style={styles.container}>
                 <Image 
                     source={{uri: item.productImageUrl}} 

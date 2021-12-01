@@ -21,10 +21,12 @@ import {useNavigation} from '@react-navigation/native';
 //Redux
 import { 
     UnHideTabBar,
-    AddToCart
+    AddToCart,
+    AddFavoriteItem, 
+    RemoveFavoriteItem,
 } from '../../actions';
 
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 //Component
 import {
@@ -44,6 +46,18 @@ export function ProductDetailScreen({route}) {
 
     const navigation = useNavigation();
     const dispatch = useDispatch();
+
+    const favoriteProducts = useSelector(state => state.productReducer.favoriteProducts);
+
+    //Render icon heart like or dislike
+    function renderFavoriteIcon(arr, item) {
+        for(let x of arr) {
+            if(x._id == item._id) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     return (
         <ScrollView style={styles.container}>
@@ -81,7 +95,23 @@ export function ProductDetailScreen({route}) {
                             <Text style={styles.productName}>{item.productName}</Text>
                         </View>
 
-                        <AntDesign name='hearto' size={25}/>
+                        {
+                            renderFavoriteIcon(favoriteProducts, item) 
+                            ? 
+                            <TouchableOpacity
+                                activeOpacity={1}
+                                onPress={() => dispatch(RemoveFavoriteItem(item))}
+                            >
+                                <AntDesign name='heart' size={25} color={Colors.pink_fire}/>
+                            </TouchableOpacity> 
+                            :
+                            <TouchableOpacity
+                                activeOpacity={1}
+                                onPress={() => dispatch(AddFavoriteItem(item))}
+                            >
+                                <AntDesign name='hearto' size={25} />
+                            </TouchableOpacity>
+                        }
                     </View>
 
                     <View>
