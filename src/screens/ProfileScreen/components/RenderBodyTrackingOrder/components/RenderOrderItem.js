@@ -46,9 +46,9 @@ export function RenderOrderItem({item}) {
                     <View>
                         {
                             isClick ?
-                            <Entypo name='chevron-down' size={30} color={Colors.tab_button_focused_blue}/>
+                            <Entypo name='chevron-down' size={30} color={Colors.pink_fire}/>
                             :
-                            <Entypo name='chevron-right' size={30} color={Colors.tab_button_focused_blue}/>
+                            <Entypo name='chevron-right' size={30} color={Colors.pink_fire}/>
                             
                         }
                     </View>
@@ -70,14 +70,14 @@ export function RenderOrderItem({item}) {
 const styles = StyleSheet.create({
     container: {
         borderBottomWidth: 1,
-        borderColor: Colors.tab_button_focused_blue
+        borderColor: Colors.pink_fire
     },
     wrapText: {
         display: 'flex',
         flexDirection: 'row',
     },
     valueStyle: {
-        color: Colors.tab_button_focused_blue,
+        color: Colors.pink_fire,
         fontWeight: '700'
     },
     labelStyle: {

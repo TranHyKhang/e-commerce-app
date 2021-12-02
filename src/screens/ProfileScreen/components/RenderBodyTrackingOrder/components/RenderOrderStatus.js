@@ -21,7 +21,7 @@ export function RenderOrderStatus({item}) {
                 style={[
                     styles.wrapIcon,
                     {
-                        backgroundColor: Colors.tab_button_focused_blue
+                        backgroundColor: Colors.pink_fire
                     }
                 ]}
             >
@@ -33,7 +33,7 @@ export function RenderOrderStatus({item}) {
                 style={[
                     styles.lineStyle,
                     {
-                        backgroundColor: item.orderStatus > 0 ? Colors.tab_button_focused_blue : Colors.sub_title_color
+                        backgroundColor: item.orderStatus > 0 ? Colors.pink_fire : Colors.sub_title_color
                     }
                 ]}
             >
@@ -41,7 +41,7 @@ export function RenderOrderStatus({item}) {
             <View style={[
                 styles.wrapIcon,
                 {
-                    backgroundColor: item.orderStatus > 0 ? Colors.tab_button_focused_blue : Colors.sub_title_color
+                    backgroundColor: item.orderStatus > 0 ? Colors.pink_fire : Colors.sub_title_color
                 }
             ]}>
                 <MaterialCommunityIcons name='truck-delivery' size={25}/>
@@ -50,13 +50,13 @@ export function RenderOrderStatus({item}) {
             <View style={[
                     styles.lineStyle,
                     {
-                        backgroundColor: item.orderStatus > 1 ? Colors.tab_button_focused_blue : Colors.sub_title_color
+                        backgroundColor: item.orderStatus > 1 ? Colors.pink_fire : Colors.sub_title_color
                     }
                 ]}></View>
             <View style={[
                 styles.wrapIcon,
                 {
-                    backgroundColor: item.orderStatus > 1 ? Colors.tab_button_focused_blue : Colors.sub_title_color
+                    backgroundColor: item.orderStatus > 1 ? Colors.pink_fire : Colors.sub_title_color
                 }
             ]}>
                 <Entypo name='location-pin' size={25}/>

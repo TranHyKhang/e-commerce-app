@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     container: {
     },
     wrapUserInfo: {
-        backgroundColor: Colors.tab_button_focused_blue,
+        backgroundColor: Colors.pink_fire,
         padding: 10
     },
     wrapLabelValue: {
