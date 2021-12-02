@@ -122,7 +122,7 @@ export function HeaderDisplayInfo() {
                                         }}
                                     >
                                         <Text 
-                                            style={[styles.userName, {color: Colors.pink_fire}]}
+                                            style={[styles.userName, {color: Colors.white, fontSize: 18}]}
                                         >
                                                 Sign in / Sign up
                                         </Text>

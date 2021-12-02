@@ -10,14 +10,21 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {useNavigation} from '@react-navigation/native';
 
+import {useDispatch} from 'react-redux';
+import {UnHideTabBar} from '../../../actions'
+
 export function Header() {
 
     const navigation = useNavigation();
+    const dispatch = useDispatch();
 
     return (
         <View style={styles.container}>
             <TouchableOpacity
-                onPress={() => navigation.navigate('ProfileScreen')}
+                onPress={() => {
+                    navigation.navigate('ProfileScreen');
+                    dispatch(UnHideTabBar())
+                }}
             >
                 <Ionicons name='close' size={30} color='white'/>
             </TouchableOpacity>

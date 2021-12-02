@@ -9,14 +9,14 @@ import {
 
 import Colors from '../utils/Colors';
 
-export function CustomButton({title, _handleEvent}) {
+export function CustomButton({title, _handleEvent, color, textColor}) {
     return (
         <TouchableOpacity
             onPress={_handleEvent}
             activeOpacity={0.8}
         >
-            <View style={styles.container}>
-                <Text style={styles.title}>{title}</Text>
+            <View style={[styles.container, {backgroundColor: color ? color : Colors.pink_fire}]}>
+                <Text style={[styles.title, {color: textColor ? textColor : Colors.white}]}>{title}</Text>
             </View>
         </TouchableOpacity>
     )
@@ -24,7 +24,7 @@ export function CustomButton({title, _handleEvent}) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: Colors.pink_fire,
+        // backgroundColor: Colors.pink_fire,
         padding: 10,
         display: 'flex',
         justifyContent: 'center',
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         borderRadius: 5
     },
     title: {
-        color: Colors.white,
+        // color: Colors.white,
         fontWeight: '900',
         fontSize: 18
     }

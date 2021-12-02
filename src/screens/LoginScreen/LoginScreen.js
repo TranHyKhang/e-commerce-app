@@ -61,7 +61,7 @@ export function LoginScreen() {
                     margin: 10
                 }}>
                     {/* Push login in here */}
-                    <CustomButton title='Login' _handleEvent={() => {
+                    <CustomButton title='Login'  _handleEvent={() => {
                         dispatch(postLogin(email, password));
                         setIsVisible(true)
                         
