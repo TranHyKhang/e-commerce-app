@@ -45,7 +45,6 @@ export function ProfileScreen() {
         let currentOffSet = event.nativeEvent.contentOffset.y;
         let direction = currentOffSet > offSet ? 'down' : 'up';
         offSet = currentOffSet;
-        console.log(currentOffSet)
         if(direction == 'down') {
             dispatch(ScrollDownEvent())
         } else {

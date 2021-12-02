@@ -165,7 +165,7 @@ export function HeaderDisplayInfo() {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: Colors.background_gray,
+        backgroundColor: Colors.black,
         padding: 20,
         paddingBottom: 40,
         paddingTop: 40

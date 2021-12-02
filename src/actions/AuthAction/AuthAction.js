@@ -30,14 +30,25 @@ export const GetUserInfo = () => {
 }
 
 //Login
-export const postLogin = (email, password, navigation) => {
+export const postLogin = (email, password) => {
     return async(dispatch) => {
-        dispatch({type: Types.LOG_OUT_REQUEST});
-        // navigation.navigate('ProfileScreen')
+        dispatch({type: Types.LOGIN_REQUEST});
         try {
             let token = await axios.post(API_URL + '/auth/login', {userEmail: email, userPassword: password});
-            await AsyncStorage.setItem('authToken', token.data);
-            dispatch({type: Types.LOGIN_SUCCESS})
+            if(
+                token.data !== 'Email cannot empty' 
+                && token.data !== 'Password cannot empty' 
+                && token.data !== 'Wrong password' 
+                && token.data !== 'User does not exist'
+            ) {
+                await AsyncStorage.setItem('authToken', token.data);
+                dispatch({type: Types.LOGIN_SUCCESS});
+            } else {
+                dispatch({type: Types.LOGIN_FAILED, payload: token.data})
+                return
+            }
+            
+
 
             if(token !== null) {
                 let data = await axios.get(API_URL + '/user', {

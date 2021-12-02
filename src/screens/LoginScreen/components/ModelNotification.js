@@ -17,11 +17,16 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
 import {useNavigation} from '@react-navigation/native'
 
+import {useDispatch} from 'react-redux';
+import {UnHideTabBar} from '../../../actions';
+
 const {width, height} = Dimensions.get('screen');
 
 export function ModelNotification({notification, isVisible, setIsVisible}) {
 
     const navigation = useNavigation();
+
+    const dispatch = useDispatch();
 
     return (
         <Modal 
@@ -64,7 +69,7 @@ export function ModelNotification({notification, isVisible, setIsVisible}) {
                             <Text 
                                 style={[styles.notificationStyle, {color: Colors.tab_button_focused_blue}]}
                             >
-                                Successfully
+                                Welcome!!!
                             </Text>
                         </View>
                         
@@ -79,9 +84,9 @@ export function ModelNotification({notification, isVisible, setIsVisible}) {
                                     setIsVisible(false)
                                 } else {
                                     setIsVisible(false)
-                                    navigation.navigate('LoginScreen');
+                                    navigation.navigate('ProfileScreen');
+                                    dispatch(UnHideTabBar())
                                 }
-                                
                             }}
                         />
                     </View>

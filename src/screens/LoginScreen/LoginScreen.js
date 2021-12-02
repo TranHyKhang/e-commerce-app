@@ -4,14 +4,9 @@ import {
     Text,
     StyleSheet,
     Dimensions,
-    TouchableOpacity
+    TouchableOpacity,
+    Image
 } from 'react-native';
-
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
-import {API_URL} from '../../utils/config'
-
-import axios from 'axios';
 
 import Colors from '../../utils/Colors';
 
@@ -19,14 +14,15 @@ import {useNavigation} from '@react-navigation/native';
 
 //Components
 import {CustomInput, CustomButton} from '../../components'
-import {Header} from './components'
+import {Header, ModelNotification} from './components'
 
 //redux
-import {useDispatch} from 'react-redux';
-import {postLogin, UnHideTabBar} from '../../actions';
+import {useDispatch, useSelector} from 'react-redux';
+import {postLogin} from '../../actions';
 
+import Logo from '../../utils/Images/Logo.png'
 
-const {width, height} = Dimensions.get('screen');
+const {width} = Dimensions.get('screen');
 
 export function LoginScreen() {
 
@@ -36,25 +32,15 @@ export function LoginScreen() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    // async function postLogin() {
-    //     try {
-    //         let token = await axios.post(API_URL + '/auth/login', {userEmail: email, userPassword: password});
-    //         try {
-    //             await AsyncStorage.setItem('authToken', token.data);
-    //             navigation.navigate('ProfileScreen')
-    //         } catch(err) {
-    //             console.log(err)
-    //         }
-    //     } catch(err) {
-    //         //login fail
-    //         console.log('haha');
-    //     }
-    // }
+    const error = useSelector(state => state.authReducer.error);
+
+    const [isVisible, setIsVisible] = useState(false);
 
     return (
         <View style={styles.container}>
             <Header/>
             <View style={styles.wrapBody}>
+                <Image source={Logo} style={{width: 80, height: 80}}/>
                 <Text style={styles.screenTitle}>Sign in</Text>
                 <View style={styles.wrapTextInput}>
                     <CustomInput 
@@ -76,22 +62,25 @@ export function LoginScreen() {
                 }}>
                     {/* Push login in here */}
                     <CustomButton title='Login' _handleEvent={() => {
-                        dispatch(postLogin(email, password, navigation));
-                        navigation.navigate('ProfileScreen');
-                        dispatch(UnHideTabBar())
+                        dispatch(postLogin(email, password));
+                        setIsVisible(true)
+                        
                     }}/>
                 </View>
-
                 <View style={styles.wrapSignUpOption}>
                     <Text style={styles.signUpOtionLabel}>Don't have an account? </Text>
                     <TouchableOpacity
-                        //navigate to sign up screen in here
                         onPress={() => navigation.navigate('SignUpScreen')}
                     >
                         <Text style={styles.signUpOptionLink}>SIGN UP</Text>
                     </TouchableOpacity>
                 </View>
             </View>
+
+            
+            <ModelNotification notification={error} isVisible={isVisible} setIsVisible={setIsVisible}/>
+
+
             
         </View>
     )
@@ -101,7 +90,7 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
-        backgroundColor: Colors.background_gray,
+        backgroundColor: Colors.black,
         // alignItems: 'center',
         // justifyContent: 'center'
     },

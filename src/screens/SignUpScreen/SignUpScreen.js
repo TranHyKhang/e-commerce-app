@@ -6,7 +6,7 @@ import {
     Dimensions,
     TouchableOpacity,
     ScrollView,
-    Button
+    Image
 } from 'react-native';
 
 import Colors from '../../utils/Colors';
@@ -18,6 +18,9 @@ import {LoadingTransparentScreen} from '../LoadingTransparentScreen';
 //Components
 import {CustomInput, CustomButton} from '../../components'
 import {Header, ModelNotification} from './components'
+
+import Logo from '../../utils/Images/Logo.png'
+
 
 //Redux
 import {useDispatch, useSelector} from 'react-redux';
@@ -48,6 +51,9 @@ export function SignUpScreen() {
             <View style={styles.container}>
                 <Header/>
                 <View style={styles.wrapBody}>
+
+                <Image source={Logo} style={{width: 80, height: 80}}/>
+
                     <Text style={styles.screenTitle}>Sign Up</Text>
                     <View style={styles.wrapTextInput}>
                         <CustomInput 
@@ -132,7 +138,7 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
-        backgroundColor: Colors.background_gray,
+        backgroundColor: Colors.black,
         // alignItems: 'center',
         // justifyContent: 'center'
     },

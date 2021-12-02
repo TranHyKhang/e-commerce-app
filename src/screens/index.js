@@ -8,3 +8,4 @@ export * from './OrderConfirmScreen';
 export * from './LoginScreen';
 export * from './SignUpScreen';
 export * from './LoadingTransparentScreen';
+export * from './SplashScreen'
