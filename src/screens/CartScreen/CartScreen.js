@@ -61,7 +61,7 @@ export function CartScreen() {
         if(user !== null) {
             navigation.navigate('OrderConfirmScreen');
         } else {
-            setIsVisible(true)
+           navigation.navigate('LoginScreen')
         }
     }
 

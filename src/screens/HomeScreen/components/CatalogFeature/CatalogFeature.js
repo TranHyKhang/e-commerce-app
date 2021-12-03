@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     famousLeftItem: {
         width: width/2,
         height: 200,
-        backgroundColor: '#EEE',
+        backgroundColor: '#f3f3f3',
         marginRight: 1,
         paddingBottom: '10%'
     },
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
     famousRightTopItem: {
         width: width/2,
         height: 100,
-        backgroundColor: '#eee',
+        backgroundColor: '#f3f3f3',
         marginBottom: 1,
         paddingBottom: '10%'
 
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     famousRightBottomItem: {
         width: width/2,
         height: 100,
-        backgroundColor: '#eee',
+        backgroundColor: '#f3f3f3',
         marginTop: 1,
         paddingBottom: '10%'
 
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     renderOneItemInRight: {
         width: width/2, 
         height: 200,
-        backgroundColor: '#eee',
+        backgroundColor: '#f3f3f3',
         paddingBottom: '10%'
 
     }

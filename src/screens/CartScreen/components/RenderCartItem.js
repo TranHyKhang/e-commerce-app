@@ -85,7 +85,15 @@ export function RenderCartItem({item, index, product}) {
                     <Image source={{uri: product.productImageUrl}} style={styles.productImage}/>
                     
                     <View style={styles.wrapOrderInfo}>
-                        <Text style={styles.productName}>{product.productName}</Text>
+                        <Text style={styles.productName}>
+                            {
+                                product.productName.length > 20 ?
+
+                                product.productName.substring(0,20) + '...'
+                                :
+                                product.productName
+                            }
+                        </Text>
                         <View style={styles.wrapSubInfo}>
                             <Text style={styles.valueStyle}>Size: </Text>
                             <Text style={styles.valueStyle}>{item.productSize}</Text>
@@ -146,11 +154,12 @@ const styles = StyleSheet.create({
     },
     wrapOrderInfo: {
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     productName: {
         fontSize: 18,
-        fontWeight: '600'
+        fontWeight: '600',
+        
     },
     wrapSubInfo: {
         display: 'flex',

@@ -156,6 +156,10 @@ export function HomeScreen() {
                 <WrapBannerAndCarousel/>
                 <CatalogFeature  productBrand={brands[0]}  additionName="RUNNING"/>
                 <FamousProduct item={specialproductProduct[0]}/>
+                <CatalogFeature  productBrand={brands[2]}  additionName=""/>
+                <FamousProduct item={specialproductProduct[13]}/>
+                <CatalogFeature  productBrand={brands[3]}  additionName=""/>
+                <FamousProduct item={specialproductProduct[5]}/>
             </View>
             
 

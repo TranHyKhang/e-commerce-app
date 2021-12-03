@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         justifyContent: 'center',
-        alignItems:'center'
+        alignItems:'center',
     },
     wrapContent: {
         width: width/1.5,
@@ -110,7 +110,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        paddingTop: 20
     },
     wrapIcon: {
         padding: 10,
