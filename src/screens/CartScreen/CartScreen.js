@@ -89,7 +89,7 @@ export function CartScreen() {
                     justifyContent: 'center',
                     alignItems: 'center'
                 }}>
-                    <Image source={EmptyCart}/>
+                    <Image source={EmptyCart} style={{width: '80%', height: '80%'}}/>
                 </View>
                 :
                 <FlatList
@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: 'white',
         display: 'flex',
-        flex: 1
+        flex: 1,
+        paddingBottom: 10
     }
 })

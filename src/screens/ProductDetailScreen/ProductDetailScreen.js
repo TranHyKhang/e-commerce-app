@@ -63,7 +63,7 @@ export function ProductDetailScreen({route}) {
         <ScrollView style={styles.container}>
             <View 
                 style={{
-                    backgroundColor: Colors.white, 
+                    backgroundColor: '#fff', 
                     padding: 15
                 }}
             >
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
     },
     closeIcon: {
         alignSelf: 'flex-end',
-        paddingRight: 15,
+        paddingRight: 0,
         paddingTop: 30
 
     },
