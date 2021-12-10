@@ -191,6 +191,7 @@ export function ProductDetailScreen({route}) {
             <CustomButton _handleEvent={() => {
                 dispatch(AddToCart(item._id, size));
                 setIsVisible(true)
+                console.log(item)
             }}/>
 
             <ModalNotification item={item} isVisible={isVisible} setIsVisible={setIsVisible}/>

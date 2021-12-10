@@ -15,13 +15,41 @@ export function RenderSizeItem({item, _handleTouchEvent, size}) {
         }
         return false;
     }
+
+    function isDisable() {
+        if(item.inventory < 1) {
+            return true;
+        } 
+        return false
+    }
     return (
         <TouchableOpacity
             activeOpacity={1}
             onPress={() => _handleTouchEvent(item.productSize)}
+            disabled={isDisable()}
         >
-            <View style={[styles.container, {borderColor: isClick() ? Colors.pink_fire : Colors.sub_title_color}]}>
-                <Text style={{fontWeight: '800'}}>{item.productSize}</Text>
+            <View 
+                style={[
+                    styles.container, 
+                    {
+                        borderColor: isClick() ? 
+                            Colors.pink_fire 
+                            : 
+                            isDisable() ?
+                            '#aaa'
+                            :
+                            Colors.sub_title_color
+                    }
+                ]}
+            >
+                <Text 
+                    style={{
+                        fontWeight: '800',
+                        color: isDisable() ? '#aaa': Colors.black 
+                    }}
+                >
+                    {item.productSize}
+                </Text>
             </View>
         </TouchableOpacity>
         
