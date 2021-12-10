@@ -47,7 +47,7 @@ export function RenderCarouselItem({item}) {
                         {item.productBrandName}
                     </Text>
                     <Text style={styles.productName}>
-                        {item.productName}
+                        {item.productName.length > 10 ? item.productName.substring(0,10) + '...' : item.productName }
                     </Text>
                 </View>
                 

@@ -1,4 +1,4 @@
-export const API_URL = 'http://192.168.19.120:3000';
+export const API_URL = 'http://192.168.1.77:3000';
 //17C
 //http://192.168.1.77:3000
 //Bela
