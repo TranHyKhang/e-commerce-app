@@ -25,15 +25,17 @@ export function RenderPaymentMethodItem({value, checked, _handleRadioButtonOnPre
                 value={value}
                 status={isChecked() ? 'checked' : 'unchecked'}
                 onPress={_handleRadioButtonOnPress}
+                color={Colors.pink_fire}
+                
             />
             <View style={styles.wrapLabel}>
                 <FontAwesome 
                     style={styles.icon} 
                     name={iconName} 
                     size={30} 
-                    color={isChecked() ? Colors.tab_button_focused_blue : Colors.bottom_tab_gray}
+                    color={isChecked() ? Colors.pink_fire : Colors.bottom_tab_gray}
                 />
-                <Text style={[styles.label, {color: isChecked() ? Colors.tab_button_focused_blue : Colors.bottom_tab_gray}]}>{label}</Text>
+                <Text style={[styles.label, {color: isChecked() ? Colors.pink_fire : Colors.bottom_tab_gray}]}>{label}</Text>
             </View>
         </View>
     )

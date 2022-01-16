@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     container: {
     },
     wrapUserInfo: {
-        backgroundColor: Colors.pink_fire,
+        backgroundColor: Colors.black,
         padding: 10
     },
     wrapLabelValue: {
@@ -118,12 +118,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     labelStyle: {
-        color: Colors.black,
+        color: Colors.white,
         fontWeight: '700'
     },
     valueStyle: {
         fontWeight: '700',
-        color: Colors.black
+        color: Colors.white
     },
     wrapOrderDetail: {
         padding: 10

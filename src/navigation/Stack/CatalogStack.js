@@ -15,9 +15,9 @@ const Stack = createStackNavigator();
 export const CatalogStack = () => {
     return (
         <Stack.Navigator
-        screenOptions={({route}) => ({
-            headerShown: false
-        })}
+            screenOptions={({route}) => ({
+                headerShown: false
+            })}
         >
             <Stack.Screen name='CatalogScreen' component={CatalogScreen}/>
             <Stack.Screen name='BrandDetailScreen' component={BrandDetailScreen}/>

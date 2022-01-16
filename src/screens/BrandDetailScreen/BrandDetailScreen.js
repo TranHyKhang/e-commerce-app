@@ -75,5 +75,6 @@ export function BrandDetailScreen({route}) {
 const styles = StyleSheet.create({
     container: {
         display: 'flex',
+        backgroundColor: 'white'
     }
 })

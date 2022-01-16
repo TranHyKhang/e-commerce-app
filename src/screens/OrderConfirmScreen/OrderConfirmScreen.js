@@ -67,7 +67,7 @@ export function OrderConfirmScreen() {
     }
 
     return (
-        <ScrollView style={{display: 'flex', flex: 1}}>
+        <ScrollView style={{display: 'flex', flex: 1, backgroundColor: 'white'}}>
             <View style={styles.container}>
                 <View>
                     <Header modalIsVisible={modalIsVisible} setModalIsVisible={setModalIsVisible}/>

@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'flex-end',
         padding: 10,
-        backgroundColor: Colors.pink_fire,
+        backgroundColor: Colors.black,
         paddingBottom: 5
     }
 })

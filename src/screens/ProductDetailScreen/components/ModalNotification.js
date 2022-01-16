@@ -42,8 +42,8 @@ export function ModalNotification({ isVisible, setIsVisible, item}) {
                             justifyContent: 'center'
                         }}
                     >
-                        <View style={[styles.wrapIcon, {borderColor: Colors.tab_button_focused_blue}]}>
-                            <Entypo name='check' size={50} color={Colors.tab_button_focused_blue}/>   
+                        <View style={[styles.wrapIcon, {borderColor: Colors.pink_fire}]}>
+                            <Entypo name='check' size={50} color={Colors.pink_fire}/>   
                         </View>
                         <View>
                             <Text 
@@ -87,15 +87,16 @@ const styles = StyleSheet.create({
         alignItems:'center'
     },
     wrapContent: {
-        width: width/1.2,
-        height: height/2,
+        width: width/1.5,
+        height: height/2.5,
         backgroundColor: Colors.white,
         borderRadius: 10,
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        paddingTop: 30
     },
-    wrapIcon: {
+    wrapIcon: { 
         padding: 10,
         borderRadius: 100,
         borderWidth: 5,

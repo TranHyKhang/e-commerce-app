@@ -42,7 +42,7 @@ export function RenderUserInfo() {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: Colors.pink_fire,
+        backgroundColor: Colors.black,
         padding: 10,
         paddingBottom: 20
     },

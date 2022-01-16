@@ -36,8 +36,14 @@ export function RenderCartItem({item, index, product}) {
     }
 
     function decreaseQuantity() {
-        setQuantity(quantity - 1);
-        dispatch(UpdateProductQuantity(quantity - 1, index))
+        if(quantity <= 1) {
+            setQuantity(1)
+            dispatch(UpdateProductQuantity(1, index))
+        } else {
+            setQuantity(quantity - 1);
+            dispatch(UpdateProductQuantity(quantity - 1, index))
+        }
+        
 
     }
     

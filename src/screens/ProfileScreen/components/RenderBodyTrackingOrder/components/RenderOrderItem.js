@@ -46,9 +46,9 @@ export function RenderOrderItem({item}) {
                     <View>
                         {
                             isClick ?
-                            <Entypo name='chevron-down' size={30} color={Colors.pink_fire}/>
+                            <Entypo name='chevron-down' size={30} color={Colors.black}/>
                             :
-                            <Entypo name='chevron-right' size={30} color={Colors.pink_fire}/>
+                            <Entypo name='chevron-right' size={30} color={Colors.black}/>
                             
                         }
                     </View>
@@ -70,7 +70,7 @@ export function RenderOrderItem({item}) {
 const styles = StyleSheet.create({
     container: {
         borderBottomWidth: 1,
-        borderColor: Colors.pink_fire
+        borderColor: Colors.black
     },
     wrapText: {
         display: 'flex',

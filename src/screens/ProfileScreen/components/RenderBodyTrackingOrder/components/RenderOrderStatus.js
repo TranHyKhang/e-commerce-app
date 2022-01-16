@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
         paddingBottom: 20
     },
     lineStyle: {
-        width: 100,
+        width: 60,
         height: 5,
     },
     wrapIcon: {

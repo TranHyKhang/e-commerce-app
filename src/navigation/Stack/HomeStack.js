@@ -16,6 +16,7 @@ export function HomeStack() {
             screenOptions={({route}) => ({
                 headerShown: false
             })}
+            initialRouteName='HomeScreen'
         >
             <Stack.Screen 
                 component={HomeScreen} 

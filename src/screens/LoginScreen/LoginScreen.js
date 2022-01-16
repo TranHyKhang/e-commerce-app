@@ -41,7 +41,7 @@ export function LoginScreen() {
             <Header/>
             <View style={styles.wrapBody}>
                 <Image source={Logo} style={{width: 80, height: 80}}/>
-                <Text style={styles.screenTitle}>Sign in</Text>
+                <Text style={styles.screenTitle}>Sign In</Text>
                 <View style={styles.wrapTextInput}>
                     <CustomInput 
                         label='Email' 
@@ -54,6 +54,7 @@ export function LoginScreen() {
                         label='Password'
                         text={password}
                         setText={setPassword}
+                        isPassword={true}
                     />
                 </View>
                 <View style={{
@@ -61,7 +62,7 @@ export function LoginScreen() {
                     margin: 10
                 }}>
                     {/* Push login in here */}
-                    <CustomButton title='Login'  _handleEvent={() => {
+                    <CustomButton title='Sign In'  _handleEvent={() => {
                         dispatch(postLogin(email, password));
                         setIsVisible(true)
                         

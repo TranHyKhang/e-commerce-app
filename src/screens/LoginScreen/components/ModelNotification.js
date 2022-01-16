@@ -63,11 +63,11 @@ export function ModelNotification({notification, isVisible, setIsVisible}) {
                             justifyContent: 'center'
                         }}
                         >
-                            <View style={[styles.wrapIcon, {borderColor: Colors.tab_button_focused_blue}]}>
-                                <Entypo name='check' size={50} color={Colors.tab_button_focused_blue}/>   
+                            <View style={[styles.wrapIcon, {borderColor: Colors.pink_fire}]}>
+                                <Entypo name='check' size={50} color={Colors.pink_fire}/>   
                             </View>
                             <Text 
-                                style={[styles.notificationStyle, {color: Colors.tab_button_focused_blue}]}
+                                style={[styles.notificationStyle, {color: Colors.pink_fire}]}
                             >
                                 Welcome!!!
                             </Text>

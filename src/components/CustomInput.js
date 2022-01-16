@@ -12,7 +12,7 @@ import Colors from '../utils/Colors';
 
 const {width} = Dimensions.get('screen');
 
-export function CustomInput({label, text, setText}) {
+export function CustomInput({label, text, setText, isPassword}) {
     return (
         <TextInput 
             style={styles.textInput} 
@@ -22,6 +22,7 @@ export function CustomInput({label, text, setText}) {
             selectionColor={Colors.pink_fire}
             theme={{ colors: {primary: Colors.pink_fire}}}
             value={text}
+            secureTextEntry={isPassword ? true : false}
             onChangeText={(text) => setText(text)}
         />
     )

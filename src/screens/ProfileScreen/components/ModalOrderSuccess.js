@@ -43,14 +43,14 @@ export function ModalOrderSuccess() {
                         justifyContent: 'center'
                     }}
                     >
-                        <View style={[styles.wrapIcon, {borderColor: Colors.tab_button_focused_blue}]}>
-                            <Entypo name='check' size={50} color={Colors.tab_button_focused_blue}/>   
+                        <View style={[styles.wrapIcon, {borderColor: Colors.pink_fire}]}>
+                            <Entypo name='check' size={50} color={Colors.pink_fire}/>   
                         </View>
                         <Text 
                             style={[
                                 styles.notificationStyle, 
                                 {
-                                    color: Colors.tab_button_focused_blue, 
+                                    color: Colors.pink_fire, 
                                     fontWeight: '900',
                                     fontSize: 25
                                 }
@@ -62,7 +62,7 @@ export function ModalOrderSuccess() {
                             style={[
                                 styles.notificationStyle, 
                                 {
-                                    color: Colors.tab_button_focused_blue, 
+                                    color: Colors.pink_fire, 
                                     fontWeight: '700',
                                     fontSize: 18,
                                     textAlign: 'center'

@@ -88,6 +88,7 @@ export function SignUpScreen() {
                             label='Password'
                             text={password}
                             setText={setPassword}
+                            isPassword={true}
                         />
                     </View>
                     <View style={styles.wrapTextInput}>
@@ -95,6 +96,7 @@ export function SignUpScreen() {
                             label='Confirm password'
                             text={confirmPassword}
                             setText={setConfirmPassword}
+                            isPassword={true}
                         />
                     </View>
                     <View style={{
